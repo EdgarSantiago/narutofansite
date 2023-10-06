@@ -36,7 +36,7 @@ export default function Navbar() {
       bg="black"
       color="white"
     >
-      <Image h="35px" w="80px" src="/logonaru.png" />
+      <Image h="30px" w="100px" src="/logonaru.png" />
       <ButtonFooter link="/placar" text="Akatsuki" icon={HiOutlineMenu} />
     </Flex>
   );

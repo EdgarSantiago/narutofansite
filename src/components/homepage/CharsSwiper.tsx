@@ -20,8 +20,9 @@ export default function CharsSwiper({ characters }: CharactersProps) {
         pagination={{
           clickable: true,
         }}
-        spaceBetween={0}
-        slidesPerView={4}
+        spaceBetween={5}
+        slidesPerView={5}
+        style={{ padding: "10px 0px" }}
       >
         {characters.map((character: Character, i: number) => (
           <SwiperSlide key={i}>
@@ -39,7 +40,6 @@ function CharacterCard({ character }: { character: Character }) {
   return (
     <Link href={`/character/${character.id}`}>
       <Box
-        m={2}
         zIndex={9999}
         border="3px solid black"
         _hover={{

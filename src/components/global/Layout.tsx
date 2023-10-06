@@ -22,6 +22,7 @@ export default function Layout({ children }: LayoutProps) {
       borderLeft="6px solid black"
       borderRight="6px solid black"
       px={10}
+      position="relative"
     >
       <Flex position={"relative"} gap={4} direction="column">
         <Navbar />

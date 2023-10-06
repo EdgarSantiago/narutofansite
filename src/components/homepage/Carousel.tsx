@@ -45,9 +45,9 @@ export default function Carousel() {
               textShadow="4px 4px 0px black"
               bg="#11111186"
             >
-              <Heading fontSize="4xl">
-                Feito com amor por{" "}
-                <chakra.span color="red.500">EdgarSantiago ❤️</chakra.span>
+              <Heading fontSize="3xl">
+                Feito com ❤️ por{" "}
+                <chakra.span color="red.400">EdgarSantiago </chakra.span>
               </Heading>
             </Flex>
             <Image

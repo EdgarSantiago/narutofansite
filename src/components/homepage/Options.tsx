@@ -73,7 +73,7 @@ export default function Options() {
                 textTransform={"uppercase"}
                 bg="white"
                 px={2}
-                border="1px solid #fafafa8"
+                border="3px solid black"
                 boxShadow={"3px 3px 0px #11111186"}
               >
                 {o.title}
@@ -82,10 +82,10 @@ export default function Options() {
                 borderLeft="2px solid black"
                 borderRight="2px solid black"
                 filter="grayscale(100%)"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.05 }}
                 as={motion.img}
                 key={i}
-                height={"120px"}
+                height={"150px"}
                 src={o.src}
                 alt={o.title}
               />
