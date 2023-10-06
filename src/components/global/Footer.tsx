@@ -1,4 +1,5 @@
 import {
+  chakra,
   Box,
   Button,
   Flex,
@@ -13,30 +14,35 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { IconType } from "react-icons";
 import { AiOutlineHome } from "react-icons/ai";
+import { BsInstagram, BsTwitter, BsWhatsapp } from "react-icons/bs";
 import { CgGames } from "react-icons/cg";
 import { HiOutlineMenu } from "react-icons/hi";
 import { MdAttachMoney, MdOutlineSchool } from "react-icons/md";
 import { Url } from "url";
-export default function Navbar() {
+export default function Footer() {
   const router = useRouter;
 
   return (
     <Flex
-      position={"sticky"}
-      top={0}
-      zIndex={9999}
-      p={4}
+      color="white"
+      bg="black"
+      shadow="md"
+      p={2}
       justifyContent={"space-between"}
       gap={[2]}
       backdropFilter="auto"
       backdropBlur="8px"
       border="3px solid black"
       align="center"
-      bg="black"
-      color="white"
     >
-      <Heading fontSize="md">Naruto site</Heading>
-      <ButtonFooter link="/placar" text="Akatsuki" icon={HiOutlineMenu} />
+      <Heading fontSize="md">
+        © 2023 By - <chakra.span color="red">EdgarSantiago</chakra.span>
+      </Heading>
+      <Flex gap={4}>
+        <ButtonFooter link="/" text="Akatsuki" icon={BsInstagram} />
+        <ButtonFooter link="/" text="Akatsuki" icon={BsWhatsapp} />
+        <ButtonFooter link="/" text="Akatsuki" icon={BsTwitter} />
+      </Flex>
     </Flex>
   );
 }

@@ -9,7 +9,7 @@ type visuals = {
 const styles = {
   global: (props: visuals) => ({
     body: {
-      bg: mode("#f5efef", "#111111")(props),
+      bg: mode("#FA9427", "#FA9427")(props),
     },
   }),
 };
