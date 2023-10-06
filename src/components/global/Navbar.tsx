@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   Icon,
+  Image,
   Show,
   Text,
   useColorModeValue,
@@ -35,7 +36,7 @@ export default function Navbar() {
       bg="black"
       color="white"
     >
-      <Heading fontSize="md">Naruto site</Heading>
+      <Image h="35px" w="80px" src="/logonaru.png" />
       <ButtonFooter link="/placar" text="Akatsuki" icon={HiOutlineMenu} />
     </Flex>
   );
@@ -60,17 +61,5 @@ function ButtonFooter({
     color: router.asPath === href ? "red" : "black",
   };
 
-  return (
-    <Flex
-      as={motion.div}
-      whileHover={{ scale: 1.05 }}
-      boxShadow={gamer ? "0px 0px 4px #e91414" : ""}
-      bg={gamer ? "#e91414" : ""}
-      color={useColorModeValue("#fafafa", "#fafafa")}
-      rounded="md"
-      textAlign={"center"}
-    >
-      <Icon fontSize={"24px"} as={icon} />
-    </Flex>
-  );
+  return <Icon fontSize={"32px"} as={icon} />;
 }

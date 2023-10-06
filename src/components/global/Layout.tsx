@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Search from "./Search";
 import ThemeToggleButton from "./theme-toggle-button";
-import { ParticlesContainer } from "./Particles";
 import Footer from "./Footer";
 
 interface LayoutProps {

@@ -40,8 +40,9 @@ export default function Search() {
           cursor: "pointer",
         }}
         transition={"ease 0.2s"}
-        w="80%"
-        h="20%"
+        w="50%"
+        h="15%"
+        boxShadow="3px 3px 0px #11111186"
       >
         <InputGroup h="100%" size="md">
           <Input
@@ -53,18 +54,17 @@ export default function Search() {
             placeholder="Procurar"
             _placeholder={{ opacity: 1, color: "#fafafab4" }}
           />
-          <InputRightElement h="100%" width="10rem">
+          <InputRightElement h="100%" width="8rem">
             <Button
               color="white"
               bg="#FA9427"
               colorScheme="orange"
               shadow="md"
-              px={5}
               h="100%"
-              w="200px"
+              w="150px"
               size="sm"
               rounded="none"
-              leftIcon={<Image src="/logo.png" height={8} />}
+              leftIcon={<Image src="/logo.png" height={5} />}
             ></Button>
           </InputRightElement>
         </InputGroup>
