@@ -14,13 +14,8 @@ import CharsSwiper from "./CharsSwiper";
 
 export default function Characters({ characters }: CharactersProps) {
   return (
-    <Flex
-      //boxShadow={"4px 4px 0px #11111156"}
-      //border="3px solid black"
-      direction={"column"}
-      gap={2}
-    >
-      <Flex mb={"40px"} justify={"space-between"} align="center">
+    <Flex direction={"column"} gap={2}>
+      <Flex mb={"0px"} justify={"space-between"} align="center">
         <Heading
           color="white"
           position="relative"
@@ -32,9 +27,9 @@ export default function Characters({ characters }: CharactersProps) {
             src="/brush.png"
             display="inline"
             position="absolute"
-            top={"-80px"}
+            top={"-60px"}
             left={"-50px"}
-            height={"200px"}
+            height={"150px"}
             width={"400px"}
             zIndex={-999}
           />
