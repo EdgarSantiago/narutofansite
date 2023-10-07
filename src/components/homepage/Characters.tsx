@@ -36,20 +36,51 @@ export default function Characters({ characters }: CharactersProps) {
           Personagens
         </Heading>
       </Flex>
-      <Button
-        w={["30%", "30%", "25%", "20%"]}
-        ml="auto"
-        rounded="none"
-        colorScheme="orange"
-        bg="#fafafa"
-        color="black"
-        border="3px solid black"
-        size="lg"
-        _hover={{ color: "white", bg: "black" }}
-        boxShadow="2px 2px 0px black"
-      >
-        Todos
-      </Button>
+      {/* chars-button-next */}
+      <Flex gap={1} justify={"end"}>
+        <Button
+          className="chars-button-prev"
+          w={["5%"]}
+          ml="auto"
+          rounded="none"
+          colorScheme="orange"
+          bg="#fafafa"
+          color="black"
+          border="3px solid black"
+          size={["md", "md", "lg", "lg"]}
+          _hover={{ color: "white", bg: "black" }}
+          boxShadow="2px 2px 0px black"
+        >
+          {"<"}
+        </Button>
+        <Button
+          className="chars-button-next"
+          w={["5%"]}
+          rounded="none"
+          colorScheme="orange"
+          bg="#fafafa"
+          color="black"
+          border="3px solid black"
+          size={["md", "md", "lg", "lg"]}
+          _hover={{ color: "white", bg: "black" }}
+          boxShadow="2px 2px 0px black"
+        >
+          {">"}
+        </Button>
+        <Button
+          w={["30%", "30%", "25%", "20%"]}
+          rounded="none"
+          colorScheme="orange"
+          bg="#fafafa"
+          color="black"
+          border="3px solid black"
+          size={["md", "md", "lg", "lg"]}
+          _hover={{ color: "white", bg: "black" }}
+          boxShadow="2px 2px 0px black"
+        >
+          Todos
+        </Button>
+      </Flex>
       <CharsSwiper characters={characters} />
     </Flex>
   );

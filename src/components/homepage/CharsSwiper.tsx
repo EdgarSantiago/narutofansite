@@ -3,7 +3,7 @@ import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination, Navigation, Mousewheel } from "swiper/modules";
 import "swiper/css";
 
 export default function CharsSwiper({ characters }: CharactersProps) {
@@ -11,9 +11,14 @@ export default function CharsSwiper({ characters }: CharactersProps) {
   return (
     <>
       <Swiper
+        navigation={{
+          nextEl: ".chars-button-next",
+          prevEl: ".chars-button-prev",
+          disabledClass: "swiper-button-disabled",
+        }}
         style={{ padding: "10px 0px" }}
-        modules={[Autoplay, Pagination, Navigation]}
-        navigation={{ enabled: true }}
+        modules={[Autoplay, Pagination, Navigation, Mousewheel]}
+        mousewheel={true}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,

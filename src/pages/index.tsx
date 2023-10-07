@@ -28,8 +28,6 @@ export default function Blog({ data }: { data: any }) {
       <Carousel />
       <Flex mt={"30px"} gap={[5, 5, 5, 20]} direction={"column"}>
         <Characters characters={data.characters} />
-        <Characters characters={data.characters} />
-        <Characters characters={data.characters} />
       </Flex>
     </Layout>
   );
