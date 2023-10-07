@@ -27,7 +27,7 @@ export default function Footer() {
       color="white"
       bg="black"
       shadow="md"
-      p={2}
+      p={4}
       justifyContent={"space-between"}
       gap={[2]}
       backdropFilter="auto"

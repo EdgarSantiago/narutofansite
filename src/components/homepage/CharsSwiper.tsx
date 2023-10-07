@@ -16,6 +16,7 @@ export default function CharsSwiper({ characters }: CharactersProps) {
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         }}
         pagination={{
           clickable: true,
