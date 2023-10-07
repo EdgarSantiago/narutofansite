@@ -26,7 +26,7 @@ export default function Options() {
     },
     {
       src: "https://www.narutodb.xyz/cards/tailedbeasts.webp",
-      title: "Bestas de caudas",
+      title: "Bestas",
       href: "",
     },
     {
@@ -44,7 +44,7 @@ export default function Options() {
   return (
     <Flex
       overflowY={"hidden"}
-      border="3px solid black"
+      border="4px solid black"
       //  background={`linear-gradient(
       //    to top,
       //    #11111163,
@@ -64,7 +64,7 @@ export default function Options() {
             <Center textAlign={"center"} position={"relative"}>
               <Text
                 fontWeight={"extrabold"}
-                fontSize={"md"}
+                fontSize={["sm", "sm", "md", "lg"]}
                 color="black"
                 textShadow={"1px 1px 0px #11111130"}
                 zIndex={999}
@@ -85,7 +85,7 @@ export default function Options() {
                 whileHover={{ scale: 1.05 }}
                 as={motion.img}
                 key={i}
-                height={"150px"}
+                height={["100px", "100px", "125px", "150px"]}
                 src={o.src}
                 alt={o.title}
               />

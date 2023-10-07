@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function Search() {
   return (
     <Flex
-      border="3px solid black"
+      border="4px solid black"
       background={`linear-gradient(
         to top,
         #11111163,
@@ -22,7 +22,7 @@ export default function Search() {
       backgroundRepeat={"no-repeat"}
       position="relative"
       direction={"column"}
-      h="30vh"
+      h={["25vh", "30vh", "40vh", "40vh"]}
       justify={"center"}
       align={"center"}
     >
@@ -40,8 +40,8 @@ export default function Search() {
           cursor: "pointer",
         }}
         transition={"ease 0.2s"}
-        w="50%"
-        h="15%"
+        w={["90%", "90%", "80%", "70%", "50%"]}
+        h={["25%", "20%", "15%", "15%"]}
         boxShadow="3px 3px 0px #11111186"
       >
         <InputGroup h="100%" size="md">
@@ -52,7 +52,7 @@ export default function Search() {
             border="2px solid #111111"
             pr="4.5rem"
             placeholder="Procurar"
-            _placeholder={{ opacity: 1, color: "#fafafab4" }}
+            _placeholder={{ opacity: 1, color: "#fafafab4", fontSize: [] }}
           />
           <InputRightElement h="100%" width="8rem">
             <Button

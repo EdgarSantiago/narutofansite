@@ -14,7 +14,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { IconType } from "react-icons";
 import { AiOutlineHome } from "react-icons/ai";
-import { BsInstagram, BsTwitter, BsWhatsapp } from "react-icons/bs";
+import { BsGithub, BsInstagram, BsTwitter, BsWhatsapp } from "react-icons/bs";
 import { CgGames } from "react-icons/cg";
 import { HiOutlineMenu } from "react-icons/hi";
 import { MdAttachMoney, MdOutlineSchool } from "react-icons/md";
@@ -40,8 +40,7 @@ export default function Footer() {
       </Heading>
       <Flex gap={4}>
         <ButtonFooter link="/" text="Akatsuki" icon={BsInstagram} />
-        <ButtonFooter link="/" text="Akatsuki" icon={BsWhatsapp} />
-        <ButtonFooter link="/" text="Akatsuki" icon={BsTwitter} />
+        <ButtonFooter link="/" text="Akatsuki" icon={BsGithub} />
       </Flex>
     </Flex>
   );

@@ -14,20 +14,20 @@ import CharsSwiper from "./CharsSwiper";
 
 export default function Characters({ characters }: CharactersProps) {
   return (
-    <Flex direction={"column"} gap={2}>
+    <Flex direction={"column"} gap={0}>
       <Flex mb={"0px"} justify={"space-between"} align="center">
         <Heading
           color="white"
           position="relative"
           w="400px"
-          fontSize={["md", "lg", "xl", "3xl"]}
+          fontSize={["2xl", "3xl", "3xl", "3xl"]}
           textTransform={"uppercase"}
         >
           <Image
             src="/brush.png"
             display="inline"
             position="absolute"
-            top={"-60px"}
+            top={"-40px"}
             left={"-50px"}
             height={"150px"}
             width={"400px"}
@@ -37,7 +37,7 @@ export default function Characters({ characters }: CharactersProps) {
         </Heading>
       </Flex>
       <Button
-        w="20%"
+        w={["30%", "30%", "25%", "20%"]}
         ml="auto"
         rounded="none"
         colorScheme="orange"

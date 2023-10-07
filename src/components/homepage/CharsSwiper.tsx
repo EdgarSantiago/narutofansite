@@ -11,6 +11,7 @@ export default function CharsSwiper({ characters }: CharactersProps) {
   return (
     <>
       <Swiper
+        style={{ padding: "10px 0px" }}
         modules={[Autoplay, Pagination, Navigation]}
         navigation={{ enabled: true }}
         autoplay={{
@@ -23,7 +24,28 @@ export default function CharsSwiper({ characters }: CharactersProps) {
         }}
         spaceBetween={5}
         slidesPerView={5}
-        style={{ padding: "10px 0px" }}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 5,
+          },
+          250: {
+            slidesPerView: 2,
+            spaceBetween: 5,
+          },
+          600: {
+            slidesPerView: 3,
+            spaceBetween: 5,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 5,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 5,
+          },
+        }}
       >
         {characters.map((character: Character, i: number) => (
           <SwiperSlide key={i}>
@@ -42,7 +64,7 @@ function CharacterCard({ character }: { character: Character }) {
     <Link href={`/character/${character.id}`}>
       <Box
         zIndex={9999}
-        border="3px solid black"
+        border="4px solid black"
         _hover={{
           transform: "scale(1.05)",
           cursor: "pointer",
@@ -71,7 +93,7 @@ function CharacterCard({ character }: { character: Character }) {
           textAlign={"center"}
           p={2}
           fontSize="small"
-          borderTop="3px solid black"
+          borderTop="4px solid black"
         >
           <Text fontWeight={"bold"} fontSize={"md"}>
             {character.name}

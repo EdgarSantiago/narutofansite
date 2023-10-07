@@ -17,14 +17,14 @@ export default function Layout({ children }: LayoutProps) {
       backdropBlur="8px"
       bg={useColorModeValue("#fafafa", "#111111ec")}
       pt={2}
-      pb={50}
+      pb={5}
       maxW="4xl"
       borderLeft="6px solid black"
       borderRight="6px solid black"
-      px={10}
+      px={[2, 3, 4, 5, 10]}
       position="relative"
     >
-      <Flex position={"relative"} gap={4} direction="column">
+      <Flex position={"relative"} gap={[2, 3, 4, 5]} direction="column">
         <Navbar />
         {children}
         <Footer />

@@ -35,10 +35,10 @@ export default function Blog({ data }: { data: any }) {
         height="80px"
       />
 
-      <Options />
       <Search />
+      <Options />
       <Carousel />
-      <Flex mt={"50px"} gap={20} direction={"column"}>
+      <Flex mt={"30px"} gap={[5, 5, 5, 20]} direction={"column"}>
         <Characters characters={data.characters} />
         <Characters characters={data.characters} />
         <Characters characters={data.characters} />

@@ -45,15 +45,15 @@ export default function Carousel() {
               textShadow="4px 4px 0px black"
               bg="#11111186"
             >
-              <Heading fontSize="3xl">
+              <Heading fontSize={["xl", "2xl", "3xl", "4xl"]}>
                 Feito com ❤️ por{" "}
                 <chakra.span color="red.400">EdgarSantiago </chakra.span>
               </Heading>
             </Flex>
             <Image
-              maxH={"40vh"}
+              maxH={["20vh", "30vh", "35vh", "35vh"]}
               filter="grayscale(100%)"
-              border="3px solid black"
+              border="4px solid black"
               src={img}
               key={i}
               position={"relative"}
