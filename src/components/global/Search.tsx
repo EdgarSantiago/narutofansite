@@ -22,7 +22,7 @@ export default function Search() {
       backgroundRepeat={"no-repeat"}
       position="relative"
       direction={"column"}
-      h={["25vh", "30vh", "40vh", "40vh"]}
+      h={["20vh", "30vh", "40vh", "40vh"]}
       justify={"center"}
       align={"center"}
     >
@@ -41,7 +41,7 @@ export default function Search() {
         }}
         transition={"ease 0.2s"}
         w={["90%", "90%", "80%", "70%", "70%"]}
-        h={["25%", "20%", "15%", "15%"]}
+        h={["30%", "20%", "15%", "15%"]}
         boxShadow="3px 3px 0px #11111186"
       >
         <InputGroup h="100%" size="md">
@@ -50,18 +50,17 @@ export default function Search() {
             bg="black"
             rounded="none"
             border="2px solid #111111"
-            pr="4.5rem"
             placeholder="Procurar"
             _placeholder={{ opacity: 1, color: "#fafafab4", fontSize: [] }}
           />
-          <InputRightElement h="100%" width="8rem">
+          <InputRightElement h="100%" width={["5rem", "5rem", "6rem", "8rem"]}>
             <Button
               color="white"
               bg="#FA9427"
               colorScheme="orange"
               shadow="md"
               h="100%"
-              w="150px"
+              w={["120px", "120px", "130px", "150px"]}
               size="sm"
               rounded="none"
               leftIcon={<Image src="/logo.png" height={5} />}

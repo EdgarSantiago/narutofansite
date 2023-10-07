@@ -51,7 +51,7 @@ export default function Carousel() {
               </Heading>
             </Flex>
             <Image
-              maxH={["20vh", "30vh", "35vh", "35vh"]}
+              maxH={["30vh", "30vh", "35vh", "35vh"]}
               filter="grayscale(100%)"
               border="4px solid black"
               src={img}

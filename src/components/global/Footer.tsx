@@ -36,7 +36,8 @@ export default function Footer() {
       align="center"
     >
       <Heading fontSize="md">
-        © 2023 By - <chakra.span color="red">EdgarSantiago</chakra.span>
+        © {new Date().getFullYear()} By -{" "}
+        <chakra.span color="red">EdgarSantiago</chakra.span>
       </Heading>
       <Flex gap={4}>
         <ButtonFooter link="/" text="Akatsuki" icon={BsInstagram} />

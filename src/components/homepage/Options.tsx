@@ -45,11 +45,6 @@ export default function Options() {
     <Flex
       overflowY={"hidden"}
       border="4px solid black"
-      //  background={`linear-gradient(
-      //    to top,
-      //    #11111163,
-      //    #ffffff39
-      //  ),url(https://e1.pxfuel.com/desktop-wallpaper/63/621/desktop-wallpaper-naruto-manga-by-thatawesomedudeyeaah-1920x1080-for-your-mobile-tablet-manga-2021.jpg)`}
       backgroundSize="100% 100%"
       backgroundRepeat={"no-repeat"}
       position="relative"
@@ -85,7 +80,7 @@ export default function Options() {
                 whileHover={{ scale: 1.05 }}
                 as={motion.img}
                 key={i}
-                height={["100px", "100px", "125px", "150px"]}
+                height={["115px", "120px", "125px", "150px"]}
                 src={o.src}
                 alt={o.title}
               />
