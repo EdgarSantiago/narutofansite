@@ -12,7 +12,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <Container
-      zIndex={9999}
+      zIndex={999}
       backdropFilter="auto"
       backdropBlur="8px"
       bg={useColorModeValue("#fafafa", "#111111ec")}

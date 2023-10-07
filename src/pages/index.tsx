@@ -21,20 +21,8 @@ export default function Blog({ data }: { data: any }) {
           x: [0, 20, 0],
           y: [0, 2, 0],
         }}
-        height="80px"
+        height="70px"
       />
-
-      <MotionImg
-        style={{ position: "absolute", bottom: "-15px", left: "-125px" }}
-        src="https://seeklogo.com/images/C/cloud-akatsuki-logo-17E3DF7FAC-seeklogo.com.png"
-        transition={{ repeat: Infinity, repeatDelay: 0, duration: 4 }}
-        animate={{
-          x: [0, 20, 0],
-          y: [0, 2, 0],
-        }}
-        height="80px"
-      />
-
       <Search />
       <Options />
       <Carousel />

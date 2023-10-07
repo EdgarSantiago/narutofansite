@@ -16,7 +16,7 @@ export default function Pointer() {
         type: "spring",
         damping: 10,
         stiffness: 50,
-        restDelta: 0.001,
+        restDelta: 0.1,
       }}
     />
   );

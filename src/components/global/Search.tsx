@@ -40,7 +40,7 @@ export default function Search() {
           cursor: "pointer",
         }}
         transition={"ease 0.2s"}
-        w={["90%", "90%", "80%", "70%", "50%"]}
+        w={["90%", "90%", "80%", "70%", "70%"]}
         h={["25%", "20%", "15%", "15%"]}
         boxShadow="3px 3px 0px #11111186"
       >
