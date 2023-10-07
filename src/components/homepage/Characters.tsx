@@ -1,21 +1,11 @@
-import { Character, CharactersProps } from "@/lib/types/characterType";
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Image,
-  Text,
-  chakra,
-} from "@chakra-ui/react";
-import Link from "next/link";
-import Marquee from "react-fast-marquee";
+import { CharactersProps } from "@/lib/types/characterType";
+import { Button, Flex, Heading, Image } from "@chakra-ui/react";
 import CharsSwiper from "./CharsSwiper";
 
 export default function Characters({ characters }: CharactersProps) {
   return (
     <Flex direction={"column"} gap={0}>
-      <Flex mb={"0px"} justify={"space-between"} align="center">
+      <Flex mb={"20px"} justify={"space-between"} align="center">
         <Heading
           color="white"
           position="relative"
@@ -36,7 +26,6 @@ export default function Characters({ characters }: CharactersProps) {
           Personagens
         </Heading>
       </Flex>
-      {/* chars-button-next */}
       <Flex gap={1} justify={"end"}>
         <Button
           className="chars-button-prev"
