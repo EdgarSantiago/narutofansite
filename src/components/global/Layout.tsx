@@ -15,7 +15,7 @@ export default function Layout({ children }: LayoutProps) {
       zIndex={9999}
       backdropFilter="auto"
       backdropBlur="8px"
-      //bg={useColorModeValue("#fafafaec", "#111111ec")}
+      bg={useColorModeValue("#fafafa", "#111111ec")}
       pt={2}
       pb={50}
       maxW="4xl"

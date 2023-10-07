@@ -4,20 +4,43 @@ import ThemeToggleButton from "@/components/global/theme-toggle-button";
 import Carousel from "@/components/homepage/Carousel";
 import Characters from "@/components/homepage/Characters";
 import Options from "@/components/homepage/Options";
+import MotionImg from "@/components/homepage/motionimgs/MotionImg";
 
 import { Flex, Image } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
 
 export default function Blog({ data }: { data: any }) {
   return (
     <Layout>
-      <Image
-        position={"absolute"}
-        top={"100px"}
-        left={"-200px"}
-        width={"25px"}
-        height={"25px"}
+      <MotionImg
+        style={{ position: "absolute", top: "100px", left: "-200px" }}
         src="https://down-br.img.susercontent.com/file/4c44324bbcc958bbd79db1a419633526"
+        transition={{ repeat: Infinity, repeatDelay: 0, duration: 4 }}
+        animate={{
+          rotate: [0, 100, 0],
+          x: [0, 10, 0],
+        }}
+      />
+
+      <MotionImg
+        style={{ position: "absolute", top: "400px", left: "-500px" }}
+        src="https://seeklogo.com/images/C/cloud-akatsuki-logo-17E3DF7FAC-seeklogo.com.png"
+        transition={{ repeat: Infinity, repeatDelay: 0, duration: 4 }}
+        animate={{
+          x: [0, 20, 0],
+          y: [0, 2, 0],
+        }}
+        height="80px"
+      />
+      <MotionImg
+        style={{ position: "absolute", top: "800px", left: "-300px" }}
+        src="https://down-br.img.susercontent.com/file/4c44324bbcc958bbd79db1a419633526"
+        transition={{ repeat: Infinity, repeatDelay: 0, duration: 4 }}
+        animate={{
+          rotate: [0, 100, 0],
+          x: [0, 10, 0],
+        }}
       />
       <Options />
       <Search />
