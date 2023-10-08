@@ -17,12 +17,10 @@ export default function SearchInput({ option }: SearchInputProps) {
 
   const handleSearch = async () => {
     try {
-      // Make an Axios GET request to the API
-      const response = await axios.get(
-        `https://narutodb.xyz/api/character/search?name=${searchQuery}`
-      );
+      // Make an Axios GET request to your Next.js API route
+      const response = await axios.get(`/api/search?name=${searchQuery}`);
 
-      // Check the response status code
+      // Handle the response data
       if (response.status === 200) {
         const data = response.data;
         setSearchResults(data); // Store the search results in state

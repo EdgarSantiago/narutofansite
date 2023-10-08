@@ -47,7 +47,7 @@ export default function Carousel() {
             >
               <Heading fontSize={["xl", "2xl", "3xl", "4xl"]}>
                 Feito com ❤️ por{" "}
-                <chakra.span color="red.400">EdgarSantiago</chakra.span>
+                <chakra.span color="#f2a30b">EdgarSantiago</chakra.span>
               </Heading>
             </Flex>
             <Image
