@@ -27,8 +27,9 @@ export default function Search() {
             border={"4px solid black"}
           >
             <Image
-              h="100%"
-              border={"4px solid black"}
+              h="8rem"
+              w="100%"
+              borderBottom={"4px solid black"}
               filter="grayscale(100%)"
               alt={o.title}
               src={o.src}
@@ -39,7 +40,7 @@ export default function Search() {
           </Flex>
         ))}
       </SimpleGrid>
-      <InputGroup h="60px" size="md">
+      {/*<InputGroup h="60px" size="md">
         <Input
           color="white"
           autoFocus
@@ -68,7 +69,7 @@ export default function Search() {
             }
           ></Button>
         </InputRightElement>
-      </InputGroup>
+      </InputGroup>*/}
     </Layout>
   );
 }
