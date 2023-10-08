@@ -1,6 +1,6 @@
 # Meu Site Ninja
 
-Criei este site como um projeto de hobby, dedicado ao mundo de Naruto! 😃. Fique à vontade para fazer modificações e estudar o código-fonte à vontade, pois ele está aqui para servir como uma plataforma de aprendizado e exploração 😎.
+Criei este site por diversão, dedicado ao mundo de Naruto! 😃. Fique à vontade para fazer modificações e estudar o código-fonte à vontade, pois ele está aqui para servir como uma plataforma de aprendizado e exploração, em troca só peço que você de uma estrela nesse repositório 😎.
 
 ## Stacks utilizadas
 
