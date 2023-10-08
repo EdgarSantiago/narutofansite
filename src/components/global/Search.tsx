@@ -44,7 +44,7 @@ export default function Search() {
         h={["30%", "20%", "15%", "15%"]}
         boxShadow="3px 3px 0px #11111186"
       >
-        <InputGroup h="100%" size="md">
+        <InputGroup as={Link} href="/search" h="100%" size="md">
           <Input
             h="100%"
             bg="black"
@@ -56,14 +56,19 @@ export default function Search() {
           <InputRightElement h="100%" width={["5rem", "5rem", "6rem", "8rem"]}>
             <Button
               color="white"
-              bg="#FA9427"
+              bg="#f2a30b"
               colorScheme="orange"
               shadow="md"
               h="100%"
               w={["120px", "120px", "130px", "150px"]}
               size="sm"
               rounded="none"
-              leftIcon={<Image src="/logo.png" height={5} />}
+              leftIcon={
+                <Image
+                  src="https://cdn3.iconfinder.com/data/icons/brands-applications/512/naruto-512.png"
+                  height={8}
+                />
+              }
             ></Button>
           </InputRightElement>
         </InputGroup>

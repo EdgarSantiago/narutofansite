@@ -7,7 +7,6 @@ import { Autoplay, Pagination, Navigation, Mousewheel } from "swiper/modules";
 import "swiper/css";
 
 export default function CharsSwiper({ characters }: CharactersProps) {
-  console.log(characters);
   return (
     <>
       <Swiper

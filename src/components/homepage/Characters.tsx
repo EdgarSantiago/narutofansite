@@ -14,6 +14,7 @@ export default function Characters({ characters }: CharactersProps) {
           textTransform={"uppercase"}
         >
           <Image
+            loading="lazy"
             src="/brush.png"
             display="inline"
             position="absolute"
