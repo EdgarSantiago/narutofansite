@@ -15,6 +15,7 @@ export default function Options() {
       justify={"center"}
       align={"center"}
       h="100%"
+      minH="15vh"
     >
       <Marquee pauseOnHover style={{ overflow: "hidden" }}>
         {options.map((o, i) => (
@@ -37,13 +38,12 @@ export default function Options() {
                 {o.title}
               </Text>
               <Image
-                borderLeft="2px solid black"
-                borderRight="2px solid black"
+                border="2px solid black"
                 filter="grayscale(100%)"
                 whileHover={{ scale: 1.05 }}
                 as={motion.img}
                 key={i}
-                height={["115px", "120px", "125px", "150px"]}
+                height={["15vh"]}
                 src={o.src}
                 alt={o.title}
               />

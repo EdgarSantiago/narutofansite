@@ -1,6 +1,12 @@
 import { CharactersProps } from "@/lib/types/characterType";
-import { Button, Flex, Heading, Image } from "@chakra-ui/react";
-import ListSwiper from "./ListSwiper";
+import { Button, Flex, Heading, Image, Skeleton } from "@chakra-ui/react";
+
+import dynamic from "next/dynamic";
+
+const DynamicListSwiper = dynamic(() => import("./ListSwiper"), {
+  loading: () => <Skeleton height="13rem" />,
+  ssr: false, // Disable server-side rendering for this dynamic component
+});
 
 export interface listItem {
   id: string;
@@ -82,7 +88,7 @@ export default function List({ data, title }: ListProps) {
           Todos
         </Button>
       </Flex>
-      <ListSwiper data={data} title={title} />
+      <DynamicListSwiper data={data} title={title} />
     </Flex>
   );
 }

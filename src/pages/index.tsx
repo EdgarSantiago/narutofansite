@@ -1,11 +1,31 @@
+import dynamic from "next/dynamic";
+
+const DynamicOptions = dynamic(() => import("@/components/homepage/Options"), {
+  loading: () => <Skeleton height="15vh" />,
+  ssr: false, // Disable server-side rendering for this dynamic component
+});
+
+const DynamicSearch = dynamic(() => import("@/components/global/Search"), {
+  loading: () => <Skeleton height={["25vh", "30vh", "40vh", "40vh"]} />,
+  ssr: false, // Disable server-side rendering for this dynamic component
+});
+
+const DynamicCarousel = dynamic(
+  () => import("@/components/homepage/Carousel"),
+  {
+    loading: () => <Skeleton height={["30vh", "30vh", "35vh", "35vh"]} />,
+    ssr: false, // Disable server-side rendering for this dynamic component
+  }
+);
+
 import Layout from "@/components/global/Layout";
-import Search from "@/components/global/Search";
 import Carousel from "@/components/homepage/Carousel";
-import Options from "@/components/homepage/Options";
+//import Search from "@/components/global/Search";
+//import Options from "@/components/homepage/Options";
 import List from "@/components/homepage/list/List";
 import MotionImg from "@/components/homepage/motionimgs/MotionImg";
 
-import { Flex } from "@chakra-ui/react";
+import { Flex, Skeleton, Spinner } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 
 export default function Blog({
@@ -44,9 +64,9 @@ export default function Blog({
         }}
         height="70px"
       />
-      <Search />
-      <Options />
-      <Carousel />
+      <DynamicSearch />
+      <DynamicOptions />
+      <DynamicCarousel />
       <Flex mt={"30px"} gap={[5, 5, 5, 20]} direction={"column"}>
         {listData.map((item, index) => (
           <List key={index} title={item.title} data={item.data} />
