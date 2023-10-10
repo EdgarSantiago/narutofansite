@@ -71,7 +71,7 @@ function ButtonFooter({
         onClick={onOpen}
       />
 
-      <Drawer onClose={onClose} isOpen={isOpen} size={"lg"}>
+      <Drawer onClose={onClose} isOpen={isOpen} size={"sm"}>
         <DrawerOverlay />
         <DrawerContent border="4px solid black" zIndex={999999999}>
           <DrawerCloseButton />
