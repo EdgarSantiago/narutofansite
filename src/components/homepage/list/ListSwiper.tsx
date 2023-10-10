@@ -14,10 +14,11 @@ export interface listItem {
 
 export interface ListProps {
   title?: string;
+  slug?: string;
   data: listItem[];
 }
 
-export default function ListSwiper({ data, title }: ListProps) {
+export default function ListSwiper({ data, title, slug }: ListProps) {
   return (
     <>
       <Swiper
@@ -64,7 +65,7 @@ export default function ListSwiper({ data, title }: ListProps) {
       >
         {data.map((character: listItem, i: number) => (
           <SwiperSlide key={i}>
-            <ListCard data={character} />
+            <ListCard data={character} slug={slug} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -72,9 +73,9 @@ export default function ListSwiper({ data, title }: ListProps) {
   );
 }
 
-function ListCard({ data }: { data: listItem }) {
+function ListCard({ data, slug }: { data: listItem; slug?: string }) {
   return (
-    <Link href={`/character/${data.id}`}>
+    <Link href={`/${slug}/${data.id}`}>
       <Box
         zIndex={9999}
         border="4px solid black"

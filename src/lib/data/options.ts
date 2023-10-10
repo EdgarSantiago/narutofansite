@@ -35,7 +35,12 @@ export const options = [
     slug: "team",
     href: "",
   },
-  { src: "https://www.narutodb.xyz/cards/kara.png", title: "kara", href: "" },
+  {
+    src: "https://www.narutodb.xyz/cards/kara.png",
+    title: "kara",
+    slug: "kara",
+    href: "",
+  },
   {
     src: "https://www.narutodb.xyz/cards/akatsuki.jpg",
     title: "Akatsuki",

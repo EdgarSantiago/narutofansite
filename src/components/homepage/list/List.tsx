@@ -16,10 +16,11 @@ export interface listItem {
 
 export interface ListProps {
   title?: string;
+  slug?: string;
   data: listItem[];
 }
 
-export default function List({ data, title }: ListProps) {
+export default function List({ data, title, slug }: ListProps) {
   return (
     <Flex direction={"column"} gap={0}>
       <Flex mb={"20px"} justify={"space-between"} align="center">
@@ -88,7 +89,7 @@ export default function List({ data, title }: ListProps) {
           Todos
         </Button>
       </Flex>
-      <DynamicListSwiper data={data} title={title} />
+      <DynamicListSwiper data={data} title={title} slug={slug} />
     </Flex>
   );
 }
