@@ -1,12 +1,18 @@
 import {
+  Box,
   Button,
+  Flex,
+  Icon,
   Image,
   Input,
   InputGroup,
   InputRightElement,
+  Text,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+import { AiFillAlert, AiFillFolderOpen } from "react-icons/ai";
+import { GrDocumentMissing } from "react-icons/gr";
 
 interface SearchInputProps {
   option?: string;
@@ -16,9 +22,11 @@ interface SearchInputProps {
 export default function SearchInput({ option, slug }: SearchInputProps) {
   const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
   const [error, setError] = useState<any>(""); // State to store the search query
-  const [searchResults, setSearchResults] = useState<any>({}); // State to store search results
+  const [loading, setLoading] = useState<boolean>(false); // State to store the search query
+  const [searchResults, setSearchResults] = useState<any>(undefined); // State to store search results
 
   const handleSearch = async (event: React.FormEvent) => {
+    setLoading(true);
     event.preventDefault(); // Prevent the default form submission behavior
     try {
       // Make an Axios GET request to your Next.js API route
@@ -42,6 +50,7 @@ export default function SearchInput({ option, slug }: SearchInputProps) {
       setError("Personagem não encontrado");
       setSearchResults(undefined);
     }
+    setLoading(false);
   };
 
   return (
@@ -60,6 +69,7 @@ export default function SearchInput({ option, slug }: SearchInputProps) {
         />
         <InputRightElement h="100%" width={["5rem", "5rem", "6rem", "8rem"]}>
           <Button
+            isLoading={loading}
             onClick={handleSearch}
             color="white"
             bg="#f2a30b"
@@ -78,8 +88,36 @@ export default function SearchInput({ option, slug }: SearchInputProps) {
           ></Button>
         </InputRightElement>
       </InputGroup>
-      {error && error}
-      {searchResults && searchResults.name}
+      {error && (
+        <>
+          <Flex
+            border="4px solid black"
+            p={4}
+            justify={"space-between"}
+            align="center"
+          >
+            <Text fontWeight={"bold"}>{error}</Text>
+            <Icon as={GrDocumentMissing} boxSize={6} />
+          </Flex>
+        </>
+      )}
+      {searchResults ? (
+        <>
+          <Flex
+            _hover={{ bg: "black", color: "white", cursor: "pointer" }}
+            border="4px solid black"
+            p={4}
+            justify={"space-between"}
+            align="center"
+          >
+            <Text fontWeight={"bold"}>{searchResults?.name}</Text>
+            <Icon as={AiFillFolderOpen} boxSize={6} />
+          </Flex>
+        </>
+      ) : (
+        <></>
+      )}
+
       {/* Display search results */}
     </>
   );

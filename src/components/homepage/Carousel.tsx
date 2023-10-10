@@ -32,7 +32,7 @@ export default function Carousel() {
         slidesPerView={1}
       >
         {images.map((img, i) => (
-          <SwiperSlide style={{ position: "relative" }}>
+          <SwiperSlide key={i} style={{ position: "relative" }}>
             <Flex
               h="100%"
               align={"center"}

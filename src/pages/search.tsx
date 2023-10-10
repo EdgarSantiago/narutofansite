@@ -51,6 +51,7 @@ export default function Search() {
         <SimpleGrid w="100%" columns={4} gap={4}>
           {options.map((o, i) => (
             <Flex
+              key={i}
               onClick={() => handleOptionClick(o.title, o.slug)}
               border={"4px solid black"}
               bg={`${o.title === selectedOption ? "black" : "white"}`}
