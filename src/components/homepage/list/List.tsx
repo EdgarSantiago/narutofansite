@@ -1,8 +1,19 @@
 import { CharactersProps } from "@/lib/types/characterType";
 import { Button, Flex, Heading, Image } from "@chakra-ui/react";
-import CharsSwiper from "./CharsSwiper";
+import ListSwiper from "./ListSwiper";
 
-export default function Characters({ characters }: CharactersProps) {
+export interface listItem {
+  id: string;
+  name: string;
+  images: [string];
+}
+
+export interface ListProps {
+  title?: string;
+  data: listItem[];
+}
+
+export default function List({ data, title }: ListProps) {
   return (
     <Flex direction={"column"} gap={0}>
       <Flex mb={"20px"} justify={"space-between"} align="center">
@@ -24,12 +35,12 @@ export default function Characters({ characters }: CharactersProps) {
             width={"400px"}
             zIndex={-999}
           />
-          Personagens
+          {title}
         </Heading>
       </Flex>
       <Flex gap={1} justify={"end"}>
         <Button
-          className="chars-button-prev"
+          className={"chars-button-prev-" + title}
           w={["5%"]}
           ml="auto"
           rounded="none"
@@ -44,7 +55,7 @@ export default function Characters({ characters }: CharactersProps) {
           {"<"}
         </Button>
         <Button
-          className="chars-button-next"
+          className={"chars-button-next-" + title}
           w={["5%"]}
           rounded="none"
           colorScheme="orange"
@@ -71,7 +82,7 @@ export default function Characters({ characters }: CharactersProps) {
           Todos
         </Button>
       </Flex>
-      <CharsSwiper characters={characters} />
+      <ListSwiper data={data} title={title} />
     </Flex>
   );
 }

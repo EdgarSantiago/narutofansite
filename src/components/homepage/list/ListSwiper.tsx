@@ -6,13 +6,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, Mousewheel } from "swiper/modules";
 import "swiper/css";
 
-export default function CharsSwiper({ characters }: CharactersProps) {
+export interface listItem {
+  id: string;
+  name: string;
+  images: [string];
+}
+
+export interface ListProps {
+  title?: string;
+  data: listItem[];
+}
+
+export default function ListSwiper({ data, title }: ListProps) {
   return (
     <>
       <Swiper
         navigation={{
-          nextEl: ".chars-button-next",
-          prevEl: ".chars-button-prev",
+          nextEl: ".chars-button-next-" + title,
+          prevEl: ".chars-button-prev-" + title,
           disabledClass: "swiper-button-disabled",
         }}
         style={{ padding: "10px 0px" }}
@@ -51,9 +62,9 @@ export default function CharsSwiper({ characters }: CharactersProps) {
           },
         }}
       >
-        {characters.map((character: Character, i: number) => (
+        {data.map((character: listItem, i: number) => (
           <SwiperSlide key={i}>
-            <CharacterCard character={character} />
+            <ListCard data={character} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -61,11 +72,9 @@ export default function CharsSwiper({ characters }: CharactersProps) {
   );
 }
 
-function CharacterCard({ character }: { character: Character }) {
-  const ranks = character.rank?.ninjaRank;
-
+function ListCard({ data }: { data: listItem }) {
   return (
-    <Link href={`/character/${character.id}`}>
+    <Link href={`/character/${data.id}`}>
       <Box
         zIndex={9999}
         border="4px solid black"
@@ -79,12 +88,12 @@ function CharacterCard({ character }: { character: Character }) {
           minH="8rem"
           w="100%"
           background={`linear-gradient(
-          to top,
-          transparent,
-          #1111113c
-        ),url(${character.images[0] ? character.images[0] : ""})`}
+    to top,
+    transparent,
+    #1111113c
+  ),url(${data.images && data.images.length > 0 ? data.images[0] : ""})`}
           backgroundSize="100% 100%"
-          backgroundRepeat={"no-repeat"}
+          backgroundRepeat="no-repeat"
           position="relative"
         ></Box>
 
@@ -100,7 +109,7 @@ function CharacterCard({ character }: { character: Character }) {
           borderTop="4px solid black"
         >
           <Text fontWeight={"bold"} fontSize={"md"}>
-            {character.name}
+            {data.name}
           </Text>
         </Flex>
       </Box>

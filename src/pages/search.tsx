@@ -26,9 +26,9 @@ export default function Search() {
       <Flex
         background={`linear-gradient(
         to top,
-        #111111a4,
-        #11111191
-      ),url(https://e1.pxfuel.com/desktop-wallpaper/63/621/desktop-wallpaper-naruto-manga-by-thatawesomedudeyeaah-1920x1080-for-your-mobile-tablet-manga-2021.jpg)`}
+        #111111,
+        #111111
+      ),url()`}
         backgroundSize="100% 100%"
         backgroundRepeat={"no-repeat"}
         direction={"column"}
@@ -40,7 +40,7 @@ export default function Search() {
           <Heading
             textShadow="2px 2px 2px black"
             color="white"
-            fontSize={"4xl"}
+            fontSize={["lg", "lg", "2xl", "4xl"]}
           >
             Oque você procura ?{" "}
             <chakra.span color="orange">
@@ -48,12 +48,16 @@ export default function Search() {
             </chakra.span>
           </Heading>
         </Box>
-        <SimpleGrid w="100%" columns={4} gap={4}>
+        <SimpleGrid w="100%" columns={[2, 2, 3, 4]} gap={4}>
           {options.map((o, i) => (
             <Flex
               key={i}
               onClick={() => handleOptionClick(o.title, o.slug)}
-              border={"4px solid black"}
+              border={`${
+                o.title === selectedOption
+                  ? "4px solid white"
+                  : "4px solid black"
+              }`}
               bg={`${o.title === selectedOption ? "black" : "white"}`}
               color={`${o.title === selectedOption ? "white" : "black"}`}
               as={motion.div}
@@ -62,7 +66,7 @@ export default function Search() {
               direction={"column"}
               gap={2}
             >
-              <Image
+              {/*<Image
                 h="6rem"
                 w="100%"
                 borderBottom={"4px solid black"}
@@ -73,8 +77,8 @@ export default function Search() {
                 }`}
                 alt={o.title}
                 src={o.src}
-              />
-              <Text px={20} fontSize="lg" fontWeight="extrabold">
+              />*/}
+              <Text py={1} fontSize={["sm", "md", "lg"]} fontWeight="extrabold">
                 {o.title}
               </Text>
             </Flex>
