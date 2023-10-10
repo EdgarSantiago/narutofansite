@@ -1,6 +1,5 @@
+import { options } from "@/lib/data/options";
 import {
-  Box,
-  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -8,25 +7,17 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
-  Heading,
   Icon,
   Image,
-  Show,
   Text,
-  transition,
-  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { IconType } from "react-icons";
-import { AiOutlineHome } from "react-icons/ai";
-import { CgGames } from "react-icons/cg";
 import { HiOutlineMenu } from "react-icons/hi";
-import { MdAttachMoney, MdOutlineSchool } from "react-icons/md";
-import { Url } from "url";
+
 export default function Navbar() {
   const router = useRouter;
 
@@ -86,15 +77,15 @@ function ButtonFooter({
           <DrawerCloseButton />
           <DrawerHeader>Menu</DrawerHeader>
           <DrawerBody>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Consequat nisl vel pretium lectus quam id. Semper quis lectus
-              nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
-              quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
-              magna eget est lorem. Erat imperdiet sed euismod nisi porta.
-              Lectus vestibulum mattis ullamcorper velit.
-            </p>
+            <Flex direction={"column"} gap={4}>
+              {options.map((o, i) => (
+                <Link href={`/${o.slug}`}>
+                  <Text fontSize="2xl" fontWeight={"extrabold"}>
+                    {o.title}
+                  </Text>
+                </Link>
+              ))}
+            </Flex>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
