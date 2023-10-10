@@ -7,38 +7,47 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+
 interface SearchInputProps {
   option?: string;
+  slug?: string;
 }
 
-export default function SearchInput({ option }: SearchInputProps) {
+export default function SearchInput({ option, slug }: SearchInputProps) {
   const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
-  const [searchResults, setSearchResults] = useState([]); // State to store search results
+  const [error, setError] = useState<any>(""); // State to store the search query
+  const [searchResults, setSearchResults] = useState<any>({}); // State to store search results
 
-  const handleSearch = async () => {
+  const handleSearch = async (event: React.FormEvent) => {
+    event.preventDefault(); // Prevent the default form submission behavior
     try {
       // Make an Axios GET request to your Next.js API route
-      const response = await axios.get(`/api/search?name=${searchQuery}`);
-
+      const response = await axios.get(
+        `/api/search?name=${searchQuery}&slug=${slug}`
+      );
       // Handle the response data
       if (response.status === 200) {
         const data = response.data;
-        setSearchResults(data); // Store the search results in state
+
+        setSearchResults(data);
+        setError(undefined); // Store the search results in state
       } else {
         // Handle non-200 status codes (e.g., 404 or 500)
         console.error(`Error: Request failed with status ${response.status}`);
+        setSearchResults(undefined);
       }
     } catch (error) {
       // Handle network errors or exceptions
-      console.error("Error searching characters:", error);
+      console.log("esse erro:" + error);
+      setError("Personagem não encontrado");
+      setSearchResults(undefined);
     }
   };
 
   return (
     <>
-      <InputGroup h="60px" size="md">
+      <InputGroup border={"4px solid black"} h="60px" size="md">
         <Input
-          value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           color="white"
           autoFocus
@@ -69,15 +78,9 @@ export default function SearchInput({ option }: SearchInputProps) {
           ></Button>
         </InputRightElement>
       </InputGroup>
+      {error && error}
+      {searchResults && searchResults.name}
       {/* Display search results */}
-      <div>
-        {searchResults.map((result: any) => (
-          <div key={result.id}>
-            {/* Display individual search results here */}
-            <p>{result.name}</p>
-          </div>
-        ))}
-      </div>
     </>
   );
 }

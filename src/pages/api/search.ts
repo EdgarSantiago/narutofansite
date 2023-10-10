@@ -1,5 +1,3 @@
-// pages/api/search.ts
-
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -8,22 +6,15 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    const { name } = req.query;
+    const { name, slug } = req.query;
 
-    const response = await axios.get(
-      `https://narutodb.xyz/api/character/search?name=${name}`
-    );
-
-    // Log the response object to the console
-    console.log(response.status);
     try {
-      const { name } = req.query;
       // Make an Axios GET request to the external API
       const response = await axios.get(
-        `https://narutodb.xyz/api/character/search?name=${name}`
+        `https://narutodb.xyz/api/${slug}/search?name=${name}`
       );
 
-      // Log the response object to the console
+      // Log the response object to the console for debugging
       console.log(response);
 
       // Check the response status code
@@ -38,6 +29,7 @@ export default async function handler(
       }
     } catch (error) {
       // Handle network errors or exceptions
+      console.error(error); // Log the error for debugging
       res.status(500).json({ error: "Error searching characters" });
     }
   } else {
