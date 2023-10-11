@@ -61,8 +61,13 @@ export default function Blog({
 
   return (
     <Layout>
-      <MotionImg
-        style={{ position: "absolute", top: "-5px", left: "-125px" }}
+      {/*<MotionImg
+        style={{
+          zIndex: 9999,
+          position: "absolute",
+          top: "-5px",
+          left: "-125px",
+        }}
         src="https://seeklogo.com/images/C/cloud-akatsuki-logo-17E3DF7FAC-seeklogo.com.png"
         transition={{ repeat: Infinity, repeatDelay: 0, duration: 4 }}
         animate={{
@@ -70,7 +75,7 @@ export default function Blog({
           y: [0, 2, 0],
         }}
         height="70px"
-      />
+      />*/}
       <DynamicSearch />
       <DynamicOptions />
       <DynamicCarousel />

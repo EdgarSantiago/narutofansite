@@ -1,4 +1,6 @@
+import Title from "@/components/global/Title";
 import { CharactersProps } from "@/lib/types/characterType";
+import { Link } from "@chakra-ui/next-js";
 import { Button, Flex, Heading, Image, Skeleton } from "@chakra-ui/react";
 
 import dynamic from "next/dynamic";
@@ -24,26 +26,7 @@ export default function List({ data, title, slug }: ListProps) {
   return (
     <Flex direction={"column"} gap={0}>
       <Flex mb={"20px"} justify={"space-between"} align="center">
-        <Heading
-          color="white"
-          position="relative"
-          w="400px"
-          fontSize={["2xl", "3xl", "3xl", "3xl"]}
-          textTransform={"uppercase"}
-        >
-          <Image
-            loading="lazy"
-            src="/brush.png"
-            display="inline"
-            position="absolute"
-            top={"-40px"}
-            left={"-50px"}
-            height={"150px"}
-            width={"400px"}
-            zIndex={-999}
-          />
-          {title}
-        </Heading>
+        <Title>{title}</Title>
       </Flex>
       <Flex gap={1} justify={"end"}>
         <Button
@@ -75,19 +58,21 @@ export default function List({ data, title, slug }: ListProps) {
         >
           {">"}
         </Button>
-        <Button
-          w={["30%", "30%", "25%", "20%"]}
-          rounded="none"
-          colorScheme="orange"
-          bg="#fafafa"
-          color="black"
-          border="3px solid black"
-          size={["md", "md", "lg", "lg"]}
-          _hover={{ color: "white", bg: "black" }}
-          boxShadow="2px 2px 0px black"
-        >
-          Todos
-        </Button>
+        <Link w={["30%", "30%", "25%", "20%"]} bg="blue" href={`/${slug}`}>
+          <Button
+            w={["100%"]}
+            rounded="none"
+            colorScheme="orange"
+            bg="#fafafa"
+            color="black"
+            border="3px solid black"
+            size={["md", "md", "lg", "lg"]}
+            _hover={{ color: "white", bg: "black" }}
+            boxShadow="2px 2px 0px black"
+          >
+            Todos
+          </Button>
+        </Link>
       </Flex>
       <DynamicListSwiper data={data} title={title} slug={slug} />
     </Flex>

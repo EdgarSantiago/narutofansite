@@ -1,13 +1,28 @@
+import Layout from "@/components/global/Layout";
+import Title from "@/components/global/Title";
 import { Character } from "@/lib/types/characterType";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 
 const CharacterDetail = ({ character }: { character: Character }) => {
+  console.log(character);
   return (
-    <div>
-      <h1>{character.name}</h1>
-      <img src={character.images[0]} alt={character.name} />
-    </div>
+    <Layout>
+      <Title>{character.name}</Title>
+      <Flex gap={[2, 3, 4, 5]}>
+        <Image
+          border="4px solid black"
+          height="180px"
+          w="180px"
+          src={character.images[0]}
+          alt={character.name}
+        />
+        <Box p={2} bg="white" w="100%" border="4px solid black">
+          <Text>teste</Text>
+        </Box>
+      </Flex>
+    </Layout>
   );
 };
 
