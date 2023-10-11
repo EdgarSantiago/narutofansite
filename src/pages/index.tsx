@@ -22,7 +22,7 @@ import Layout from "@/components/global/Layout";
 import Carousel from "@/components/homepage/Carousel";
 //import Search from "@/components/global/Search";
 //import Options from "@/components/homepage/Options";
-import List from "@/components/homepage/list/List";
+import List from "@/components/global/list/List";
 import MotionImg from "@/components/homepage/motionimgs/MotionImg";
 
 import { Flex, Skeleton, Spinner } from "@chakra-ui/react";

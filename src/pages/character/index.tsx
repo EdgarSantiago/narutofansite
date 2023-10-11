@@ -1,10 +1,15 @@
 import Layout from "@/components/global/Layout";
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useRouter } from "next/router";
+import ListCard from "@/components/global/list/ListCard";
+import Title from "@/components/global/Title";
+import { Flex, SimpleGrid } from "@chakra-ui/react";
+import CustomPagination from "@/components/character/CustomPagination";
 
 export default function Characters({ chars }: { chars: any }) {
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(0);
   const pageSize = 20;
   const totalCharacters = chars.totalCharacters;
@@ -13,23 +18,27 @@ export default function Characters({ chars }: { chars: any }) {
   const endIndex = startIndex + pageSize;
   const charactersOnPage = chars.characters.slice(startIndex, endIndex);
 
-  const router = useRouter();
-
   const handlePageChange = (selectedPage: { selected: number }) => {
-    const newPage = selectedPage.selected;
-    setCurrentPage(newPage);
-
-    // Programmatically update the URL with the new page
-    router.push(`/character?page=${newPage + 1}`);
+    console.log(selectedPage.selected);
+    if (selectedPage.selected + 1 === Number(router.query.page)) {
+      console.log("do nothing");
+    } else {
+      const newPage = selectedPage.selected;
+      setCurrentPage(newPage);
+      // Programmatically update the URL with the new page
+      router.push(`/character?page=${newPage + 1}`);
+    }
   };
 
   return (
     <Layout>
-      <h1>Todos os personagens</h1>
+      <Title>Personagens</Title>
 
-      {charactersOnPage.map((character: any) => (
-        <div key={character.id}>{character.name}</div>
-      ))}
+      <SimpleGrid columns={5} gap={4}>
+        {charactersOnPage.map((character: any) => (
+          <ListCard data={character} slug="character" />
+        ))}
+      </SimpleGrid>
 
       <ReactPaginate
         previousLabel={"Previous"}
@@ -41,13 +50,14 @@ export default function Characters({ chars }: { chars: any }) {
         onPageChange={handlePageChange}
         containerClassName={"pagination"}
         activeClassName={"active"}
+        forcePage={currentPage ? currentPage : Number(router.query.page) - 1}
       />
     </Layout>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const page = context.query.page || "1"; // Get the page parameter from the query string or default to page 1.
+  const page = context.query.page || "1";
   const limit = 20;
 
   try {

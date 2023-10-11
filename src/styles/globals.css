@@ -91,3 +91,62 @@ body {
   opacity: 0.7; /* Ajuste a opacidade conforme necessário */
   pointer-events: none; /* Make the element not clickable */
 }
+
+/* pagination */
+
+.pagination {
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 9;
+  width: 100%;
+}
+
+ul.pagination li {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #e2e2e2;
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+}
+
+ul.pagination li a {
+  text-decoration: none;
+  color: #337ab7;
+  font-size: 20px;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+
+ul.pagination li.active a {
+  color: white;
+}
+ul.pagination li.active {
+  background-color: #337ab7;
+}
+
+ul.pagination li a:hover,
+ul.pagination li a.active {
+  color: blue;
+}
+
+.page-selection {
+  width: 48px;
+  height: 30px;
+  color: #337ab7;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
