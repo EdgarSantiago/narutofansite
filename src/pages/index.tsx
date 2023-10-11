@@ -76,13 +76,8 @@ export default function Blog({
       <DynamicOptions />
       <DynamicCarousel />
       <Flex mt={"30px"} gap={[5, 5, 5, 20]} direction={"column"}>
-        {listData.map((item, index) => (
-          <List
-            key={index}
-            title={item.title}
-            slug={item.slug}
-            data={item.data}
-          />
+        {listData.map((item, i) => (
+          <List key={i} title={item.title} slug={item.slug} data={item.data} />
         ))}
       </Flex>
     </Layout>
