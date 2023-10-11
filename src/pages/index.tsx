@@ -52,11 +52,7 @@ export default function Blog({
     { slug: "character", title: "Personagens", data: chars.characters },
     { slug: "kara", title: "Kara", data: kara.kara },
     { slug: "akatsuki", title: "Akatsuki", data: akatsuki.akatsuki },
-    //{ slug: "tailed-beast", title: "Bestas", data: beasts.tailedBeasts },
-    //{ slug: "kekkei-genkai", title: "Kekkei Genkai", data: kgs.kekkeigenkai },
-    //{ slug: "clan", title: "Clans", data: clans.clans },
-    //{ slug: "village", title: "Vilas", data: villages.villages },
-    //{ slug: "team", title: "Times", data: teams.teams },
+    { slug: "tailed-beast", title: "Bestas", data: beasts.tailedBeasts },
   ];
 
   return (
@@ -98,9 +94,6 @@ export const getStaticProps: GetStaticProps = async () => {
   //get chars
   const res = await fetch("https://narutodb.xyz/api/character");
   const chars = await res.json();
-  //get clans https://narutodb.xyz/api/clan
-  const res2 = await fetch("https://narutodb.xyz/api/clan");
-  const clans = await res2.json();
 
   //get kara https://narutodb.xyz/api/kara
   const res3 = await fetch("https://narutodb.xyz/api/kara");
@@ -110,30 +103,16 @@ export const getStaticProps: GetStaticProps = async () => {
   const res4 = await fetch("https://narutodb.xyz/api/akatsuki");
   const akatsuki = await res4.json();
 
-  //get akatsuki https://narutodb.xyz/api/kekkei-genkai
-  const res5 = await fetch("https://narutodb.xyz/api/kekkei-genkai");
-  const kgs = await res5.json();
-
   //get beasts https://narutodb.xyz/api/tailed-beast
   const res6 = await fetch("https://narutodb.xyz/api/tailed-beast");
   const beasts = await res6.json();
 
-  //get teams https://narutodb.xyz/api/team
-  const res7 = await fetch("https://narutodb.xyz/api/team");
-  const teams = await res7.json();
-  //get teams https://narutodb.xyz/api/team
-  const res8 = await fetch("https://narutodb.xyz/api/village");
-  const villages = await res8.json();
   return {
     props: {
       chars: chars,
-      clans: clans,
       kara: kara,
       akatsuki: akatsuki,
-      kgs: kgs,
       beasts: beasts,
-      teams: teams,
-      villages: villages,
     },
   };
 };
