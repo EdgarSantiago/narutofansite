@@ -9,7 +9,6 @@ import { Flex, Heading, Image, Text, chakra } from "@chakra-ui/react";
 export default function Carousel() {
   const images = [
     "https://wallpapercave.com/wp/wp4642400.jpg",
-    "https://wallpaper.dog/large/10888694.jpg",
     "https://wallpapers.com/images/featured/naruto-shippuden-4k-1lnarxno8m1advxy.jpg",
     "https://wallpaper.dog/large/20544375.jpg",
     "https://pbs.twimg.com/media/FGlViuZX0AYFoMY.jpg:large",
