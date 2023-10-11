@@ -39,24 +39,26 @@ export default function Characters({ chars }: { chars: any }) {
     <Layout>
       <Title>Personagens</Title>
 
-      <SimpleGrid columns={5} gap={4}>
+      <SimpleGrid columns={[2, 2, 3, 4, 5]} gap={[2, 2, 2, 3, 4]}>
         {chars.characters.map((character: any) => (
           <DynamicListCard data={character} slug="character" />
         ))}
       </SimpleGrid>
 
-      <ReactPaginate
-        previousLabel={"Voltar"}
-        nextLabel={"Próximo"}
-        breakLabel={"..."}
-        pageCount={Math.ceil(totalCharacters / pageSize)}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageChange}
-        containerClassName={"pagination"}
-        activeClassName={"active"}
-        forcePage={currentPage}
-      />
+      <Flex>
+        <ReactPaginate
+          previousLabel={"Voltar"}
+          nextLabel={"Próximo"}
+          breakLabel={"..."}
+          pageCount={Math.ceil(totalCharacters / pageSize)}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={3}
+          onPageChange={handlePageChange}
+          containerClassName={"pagination"}
+          activeClassName={"active"}
+          forcePage={currentPage}
+        />
+      </Flex>
     </Layout>
   );
 }

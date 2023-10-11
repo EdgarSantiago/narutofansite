@@ -37,7 +37,7 @@ export default function Layout(
       px={[2, 3, 4, 5, 10]}
       position="relative"
       minH="100vh"
-      overflowY={"hidden"}
+      overflow={"hidden"}
     >
       <motion.div
         ref={ref}

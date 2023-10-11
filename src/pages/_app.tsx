@@ -1,6 +1,7 @@
 import Pointer from "@/components/global/pointer/Pointer";
 import Fonts from "@/lib/Fonts";
 import "@/styles/globals.css";
+import "@/styles/paginate.css";
 import { CSSReset, ChakraProvider, Show, theme } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
