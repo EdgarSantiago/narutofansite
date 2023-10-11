@@ -5,13 +5,24 @@ import ReactPaginate from "react-paginate";
 import { useRouter } from "next/router";
 import ListCard from "@/components/global/list/ListCard";
 import Title from "@/components/global/Title";
-import { Flex, SimpleGrid } from "@chakra-ui/react";
-import CustomPagination from "@/components/character/CustomPagination";
+import { Flex, SimpleGrid, Skeleton } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
+
+const DynamicListCard = dynamic(
+  () => import("@/components/global/list/ListCard"),
+  {
+    loading: () => <Skeleton height={["13rem"]} />,
+    ssr: false, // Disable server-side rendering for this dynamic component
+  }
+);
 
 export default function Characters({ chars }: { chars: any }) {
   const router = useRouter();
 
-  const [currentPage, setCurrentPage] = useState(Number(router.query.page) - 1);
+  // Parse the page number from router.query.page or default to 1
+  const initialPage = Number(router.query.page) || 1;
+
+  const [currentPage, setCurrentPage] = useState(initialPage - 1);
   const pageSize = 20;
   const totalCharacters = chars.totalCharacters;
 
@@ -30,13 +41,13 @@ export default function Characters({ chars }: { chars: any }) {
 
       <SimpleGrid columns={5} gap={4}>
         {chars.characters.map((character: any) => (
-          <ListCard data={character} slug="character" />
+          <DynamicListCard data={character} slug="character" />
         ))}
       </SimpleGrid>
 
       <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
+        previousLabel={"Voltar"}
+        nextLabel={"Próximo"}
         breakLabel={"..."}
         pageCount={Math.ceil(totalCharacters / pageSize)}
         marginPagesDisplayed={2}
@@ -44,6 +55,7 @@ export default function Characters({ chars }: { chars: any }) {
         onPageChange={handlePageChange}
         containerClassName={"pagination"}
         activeClassName={"active"}
+        forcePage={currentPage}
       />
     </Layout>
   );
