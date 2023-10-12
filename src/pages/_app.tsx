@@ -6,6 +6,7 @@ import { CSSReset, ChakraProvider, Show, theme } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
+import NextNProgress from "nextjs-progressbar";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Pointer />
       </Show>
       <Fonts />
+      <NextNProgress color="orange" height={5} />
       <AnimatePresence initial={false} mode="wait">
         <Component key={pageKey} {...pageProps} />
       </AnimatePresence>
