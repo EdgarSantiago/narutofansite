@@ -27,5 +27,4 @@ Criei este site por diversão, dedicado ao mundo de Naruto! 😃. Fique à vonta
 
 ## Créditos
 
-- [@chediak](https://github.com/chediak/)
 - [@narutoApi](https://www.narutodb.xyz/)

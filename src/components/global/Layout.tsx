@@ -32,8 +32,8 @@ export default function Layout(
       pt={2}
       pb={5}
       maxW="5xl"
-      borderLeft="6px solid black"
-      borderRight="6px solid black"
+      //borderLeft="6px solid black"
+      //borderRight="6px solid black"
       px={[2, 3, 4, 5, 10]}
       position="relative"
       minH="100vh"
