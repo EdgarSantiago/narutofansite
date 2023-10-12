@@ -10,7 +10,7 @@
 html,
 body {
   /*background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYlgl8uQYaun-CIlLiDRcvd0ZNw8AQSSj9Sw&usqp=CAU");*/
-  background-color: #fafafa;
+  background-color: #f4f4f4;
   z-index: -10000;
   max-width: 100vw;
   overflow-x: hidden;

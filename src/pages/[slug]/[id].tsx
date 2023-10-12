@@ -105,7 +105,7 @@ interface CharacterDetailProps {
 export const getServerSideProps: GetServerSideProps<
   CharacterDetailProps
 > = async ({ params }) => {
-  const { id } = params as { id: string };
+  const { id, slug } = params as { id: string; slug: string };
 
   try {
     if (!id) {
@@ -113,7 +113,7 @@ export const getServerSideProps: GetServerSideProps<
     }
 
     const response = await axios.get<Character>(
-      `https://narutodb.xyz/api/character/${id}`
+      `https://narutodb.xyz/api/${slug}/${id}`
     );
     const character = response.data;
 
