@@ -38,7 +38,6 @@ export default function Characters({ chars }: { chars: any }) {
   if (!chars) {
     return <div>Loading...</div>;
   }
-  console.log(Math.ceil(totalCharacters / pageSize));
 
   return (
     <Layout>
