@@ -6,9 +6,9 @@ export default function Title({ children }: { children: ReactNode }) {
     <Heading
       color="white"
       position="relative"
-      w="480px"
-      fontSize={["2xl", "3xl", "3xl", "5xl"]}
+      fontSize={["4xl", "4xl", "5xl", "4xl"]}
       textTransform={"uppercase"}
+      w="100%"
     >
       <Image
         loading="lazy"
@@ -17,8 +17,8 @@ export default function Title({ children }: { children: ReactNode }) {
         position="absolute"
         top={"-40px"}
         left={"-50px"}
-        height={"150px"}
-        width={"100%"}
+        height={["125px", "150px", "150px"]}
+        w={["380px", "480px", "500px"]}
         zIndex={-999}
       />
       {children}

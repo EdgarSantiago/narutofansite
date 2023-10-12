@@ -15,7 +15,6 @@ export default async function handler(
       );
 
       // Log the response object to the console for debugging
-      console.log(response);
 
       // Check the response status code
       if (response.status === 200) {

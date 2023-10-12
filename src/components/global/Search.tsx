@@ -22,7 +22,7 @@ export default function Search() {
       backgroundRepeat={"no-repeat"}
       position="relative"
       direction={"column"}
-      h={["20vh", "30vh", "40vh", "40vh"]}
+      h={["20vh", "30vh", "40vh", "60vh"]}
       justify={"center"}
       align={"center"}
     >

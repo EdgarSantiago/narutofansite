@@ -18,8 +18,6 @@ import axios from "axios";
 import { GetServerSideProps } from "next";
 
 const CharacterDetail = ({ character }: { character: Character }) => {
-  console.log(character);
-
   // Function to render all parameters including arrays
   const renderCharacterParameters = (obj: any) => {
     return Object.entries(obj).map(([key, value]) => {

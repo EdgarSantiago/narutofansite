@@ -30,7 +30,7 @@ export default function ListSwiper({ data, title, slug }: ListProps) {
         }}
         style={{ padding: "10px 0px" }}
         modules={[Autoplay, Pagination, Navigation, Mousewheel]}
-        mousewheel={true}
+        mousewheel={false}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
@@ -59,7 +59,7 @@ export default function ListSwiper({ data, title, slug }: ListProps) {
             spaceBetween: 5,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 7,
             spaceBetween: 5,
           },
         }}

@@ -33,30 +33,30 @@ export default function Carousel() {
         {images.map((img, i) => (
           <SwiperSlide key={i} style={{ position: "relative" }}>
             <Flex
-              h="100%"
+              h={["30vh", "40vh", "50vh", "60vh"]}
               align={"center"}
               justify={"center"}
               w="100%"
-              position={"absolute"}
-              top={0}
               zIndex={999}
               color="white"
               textShadow="4px 4px 0px black"
-              bg="#11111140"
+              backgroundSize="100% 100%"
+              backgroundRepeat={"no-repeat"}
             >
               {/*<Heading fontSize={["xl", "2xl", "3xl", "4xl"]}>
                 Feito com ❤️ por{" "}
                 <chakra.span color="#f2a30b">EdgarSantiago</chakra.span>
               </Heading>*/}
+              <Image
+                objectFit={"cover"}
+                h={"100%"}
+                w={"100%"}
+                filter="grayscale(100%)"
+                border="4px solid black"
+                src={img}
+                position={"relative"}
+              />
             </Flex>
-            <Image
-              maxH={["25vh", "30vh", "35vh", "35vh"]}
-              filter="grayscale(100%)"
-              border="4px solid black"
-              src={img}
-              key={i}
-              position={"relative"}
-            />
           </SwiperSlide>
         ))}
       </Swiper>

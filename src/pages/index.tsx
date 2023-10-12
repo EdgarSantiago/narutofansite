@@ -1,9 +1,12 @@
 import dynamic from "next/dynamic";
 
-const DynamicOptions = dynamic(() => import("@/components/homepage/Options"), {
-  loading: () => <Skeleton height="15vh" />,
-  ssr: false, // Disable server-side rendering for this dynamic component
-});
+const DynamicOptions = dynamic(
+  () => import("@/components/homepage/options/Options"),
+  {
+    loading: () => <Skeleton height="10rem" />,
+    ssr: false, // Disable server-side rendering for this dynamic component
+  }
+);
 
 const DynamicSearch = dynamic(() => import("@/components/global/Search"), {
   loading: () => <Skeleton height={["25vh", "30vh", "40vh", "40vh"]} />,
@@ -23,7 +26,6 @@ import Carousel from "@/components/homepage/Carousel";
 //import Search from "@/components/global/Search";
 //import Options from "@/components/homepage/Options";
 import List from "@/components/global/list/List";
-import MotionImg from "@/components/homepage/motionimgs/MotionImg";
 
 import { Flex, Skeleton, Spinner } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
@@ -57,24 +59,8 @@ export default function Blog({
 
   return (
     <Layout>
-      {/*<MotionImg
-        style={{
-          zIndex: 9999,
-          position: "absolute",
-          top: "-5px",
-          left: "-125px",
-        }}
-        src="https://seeklogo.com/images/C/cloud-akatsuki-logo-17E3DF7FAC-seeklogo.com.png"
-        transition={{ repeat: Infinity, repeatDelay: 0, duration: 4 }}
-        animate={{
-          x: [0, 20, 0],
-          y: [0, 2, 0],
-        }}
-        height="70px"
-      />*/}
-      <DynamicSearch />
-      <DynamicOptions />
       <DynamicCarousel />
+      <DynamicOptions title="Opções" slug="options" />
       <Flex mt={"30px"} gap={[5, 5, 5, 20]} direction={"column"}>
         {listData.map((item, i) => (
           <List key={i} title={item.title} slug={item.slug} data={item.data} />

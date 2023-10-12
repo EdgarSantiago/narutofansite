@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useRouter } from "next/router";
 import Title from "@/components/global/Title";
-import { Flex, SimpleGrid, Skeleton } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid, Skeleton } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
+import SearchInput from "@/components/search/SearchInput";
 
 const DynamicListCard = dynamic(
   () => import("@/components/global/list/ListCard"),
@@ -54,8 +55,13 @@ export default function Characters({ data }: { data: any }) {
 
   return (
     <Layout>
+      <SearchInput
+        option={String(router.query.slug)}
+        slug={String(router.query.slug)}
+      />
+
       <Title>Personagens</Title>
-      <SimpleGrid columns={[2, 2, 3, 4, 5]} gap={[2, 2, 2, 3, 4]}>
+      <SimpleGrid columns={[2, 2, 3, 4, 6]} gap={[2, 2, 2, 3, 4]}>
         {characterList.map((character: any) => (
           <DynamicListCard
             key={character.id}

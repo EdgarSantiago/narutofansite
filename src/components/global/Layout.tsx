@@ -31,9 +31,7 @@ export default function Layout(
       bg={useColorModeValue("#fafafa", "#fafafa")}
       pt={2}
       pb={5}
-      maxW="5xl"
-      //borderLeft="6px solid black"
-      //borderRight="6px solid black"
+      maxW="8xl"
       px={[2, 3, 4, 5, 10]}
       position="relative"
       minH="100vh"

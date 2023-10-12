@@ -79,7 +79,7 @@ function ButtonFooter({
           <DrawerBody>
             <Flex direction={"column"} gap={4}>
               {options.map((o, i) => (
-                <Link key={i} href={`/${o.slug}`}>
+                <Link key={i} href={`/search/${o.slug}`}>
                   <Text fontSize="2xl" fontWeight={"extrabold"}>
                     {o.title}
                   </Text>

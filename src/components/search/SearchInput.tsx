@@ -10,6 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import axios from "axios";
+import Link from "next/link";
 import { useState } from "react";
 import { AiFillAlert, AiFillFolderOpen } from "react-icons/ai";
 import { GrDocumentMissing } from "react-icons/gr";
@@ -46,7 +47,6 @@ export default function SearchInput({ option, slug }: SearchInputProps) {
       }
     } catch (error) {
       // Handle network errors or exceptions
-      console.log("esse erro:" + error);
       setError("Personagem não encontrado");
       setSearchResults(undefined);
     }
@@ -103,16 +103,18 @@ export default function SearchInput({ option, slug }: SearchInputProps) {
       )}
       {searchResults ? (
         <>
-          <Flex
-            _hover={{ bg: "black", color: "white", cursor: "pointer" }}
-            border="4px solid black"
-            p={4}
-            justify={"space-between"}
-            align="center"
-          >
-            <Text fontWeight={"bold"}>{searchResults?.name}</Text>
-            <Icon as={AiFillFolderOpen} boxSize={6} />
-          </Flex>
+          <Link href={`/${option}/${searchResults?.id}`}>
+            <Flex
+              _hover={{ bg: "black", color: "white", cursor: "pointer" }}
+              border="4px solid black"
+              p={4}
+              justify={"space-between"}
+              align="center"
+            >
+              <Text fontWeight={"bold"}>{searchResults?.name}</Text>
+              <Icon as={AiFillFolderOpen} boxSize={6} />
+            </Flex>
+          </Link>
         </>
       ) : (
         <></>
