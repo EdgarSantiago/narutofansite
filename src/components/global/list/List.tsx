@@ -58,7 +58,11 @@ export default function List({ data, title, slug }: ListProps) {
         >
           {">"}
         </Button>
-        <Link w={["30%", "30%", "25%", "20%"]} bg="blue" href={`/${slug}`}>
+        <Link
+          w={["30%", "30%", "25%", "20%"]}
+          bg="blue"
+          href={`/search/${slug}`}
+        >
           <Button
             w={["100%"]}
             rounded="none"

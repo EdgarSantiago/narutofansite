@@ -19,7 +19,7 @@ export default function Options() {
     >
       <Marquee pauseOnHover style={{ overflow: "hidden" }}>
         {options.map((o, i) => (
-          <Link href={`/${o.slug}`} key={i}>
+          <Link href={`/search/${o.slug}`} key={i}>
             <Center textAlign={"center"} position={"relative"}>
               <Text
                 fontWeight={"extrabold"}

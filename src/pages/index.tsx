@@ -50,8 +50,8 @@ export default function Blog({
   //missing teams, villages
   const listData = [
     { slug: "character", title: "Personagens", data: chars.characters },
-    { slug: "character", title: "Kara", data: kara.kara },
-    { slug: "character", title: "Akatsuki", data: akatsuki.akatsuki },
+    { slug: "kara", title: "Kara", data: kara.kara },
+    { slug: "akatsuki", title: "Akatsuki", data: akatsuki.akatsuki },
     { slug: "tailed-beast", title: "Bestas", data: beasts.tailedBeasts },
   ];
 
