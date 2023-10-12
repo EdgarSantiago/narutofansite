@@ -17,7 +17,6 @@ const DynamicListCard = dynamic(
 );
 
 export default function Characters({ chars }: { chars: any }) {
-  console.log(chars);
   const router = useRouter();
 
   // Parse the page number from router.query.page or default to 1
@@ -39,6 +38,7 @@ export default function Characters({ chars }: { chars: any }) {
   if (!chars) {
     return <div>Loading...</div>;
   }
+  console.log(Math.ceil(totalCharacters / pageSize));
 
   return (
     <Layout>
@@ -61,7 +61,7 @@ export default function Characters({ chars }: { chars: any }) {
               previousLabel={"Voltar"}
               nextLabel={"Próximo"}
               breakLabel={"..."}
-              pageCount={Math.ceil(totalCharacters / pageSize)}
+              pageCount={72}
               marginPagesDisplayed={1}
               pageRangeDisplayed={3}
               onPageChange={handlePageChange}
