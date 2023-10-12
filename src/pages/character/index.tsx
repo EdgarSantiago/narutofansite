@@ -58,9 +58,10 @@ export default function Characters({ chars }: { chars: any }) {
         <>
           <Flex>
             <ReactPaginate
-              previousLabel={"Voltar"}
-              nextLabel={"Próximo"}
+              //previousLabel={"Voltar"}
+              //nextLabel={"Próximo"}
               breakLabel={"..."}
+              renderOnZeroPageCount={null}
               pageCount={72}
               marginPagesDisplayed={1}
               pageRangeDisplayed={3}
