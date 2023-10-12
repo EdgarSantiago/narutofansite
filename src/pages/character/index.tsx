@@ -17,6 +17,7 @@ const DynamicListCard = dynamic(
 );
 
 export default function Characters({ chars }: { chars: any }) {
+  console.log(chars);
   const router = useRouter();
 
   // Parse the page number from router.query.page or default to 1
@@ -34,6 +35,10 @@ export default function Characters({ chars }: { chars: any }) {
       router.push(`/character?page=${newPage + 1}`);
     }
   };
+
+  if (!chars) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Layout>
