@@ -83,7 +83,7 @@ const CharacterDetail = ({ character }: { character: Character }) => {
         />
         {/*<SimpleGrid mx="auto" columns={1} gap={10} w="80%">*/}
         <Accordion
-          w="60%"
+          w={["100%", "100%", "80%", "60%"]}
           mx="auto"
           border="4px solid black"
           defaultIndex={[0]}
