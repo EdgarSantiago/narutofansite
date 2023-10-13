@@ -65,7 +65,7 @@ export default function OptionsSwiper({ title, slug }: OptionsProps) {
             spaceBetween: 5,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 4,
             spaceBetween: 5,
           },
         }}

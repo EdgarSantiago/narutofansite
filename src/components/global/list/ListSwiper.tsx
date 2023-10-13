@@ -59,7 +59,7 @@ export default function ListSwiper({ data, title, slug }: ListProps) {
             spaceBetween: 5,
           },
           1024: {
-            slidesPerView: 7,
+            slidesPerView: 5,
             spaceBetween: 5,
           },
         }}

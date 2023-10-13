@@ -5,7 +5,6 @@ import Search from "./Search";
 import ThemeToggleButton from "./theme-toggle-button";
 import Footer from "./Footer";
 import { HTMLMotionProps, motion } from "framer-motion";
-import MotionImg from "../homepage/motionimgs/MotionImg";
 
 type PageTransitionProps = HTMLMotionProps<"div">;
 type PageTransitionRef = React.ForwardedRef<HTMLDivElement>;
@@ -31,7 +30,7 @@ export default function Layout(
       bg={useColorModeValue("#fafafa", "#fafafa")}
       pt={2}
       pb={5}
-      maxW="8xl"
+      maxW="5xl"
       px={[2, 3, 4, 5, 10]}
       position="relative"
       minH="100vh"
