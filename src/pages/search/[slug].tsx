@@ -61,7 +61,7 @@ export default function Characters({ data }: { data: any }) {
       />
 
       <Title>Personagens</Title>
-      <SimpleGrid columns={[2, 2, 3, 4, 6]} gap={[2, 2, 2, 3, 4]}>
+      <SimpleGrid columns={[2, 2, 3, 4, 5]} gap={[2, 2, 2, 3, 4]}>
         {characterList.map((character: any) => (
           <DynamicListCard
             key={character.id}
