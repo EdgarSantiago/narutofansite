@@ -17,13 +17,13 @@ import {
 import axios from "axios";
 import { GetServerSideProps } from "next";
 
-const CharacterDetail = ({ character }: { character: Character }) => {
+const CharacterDetail = ({ data }: { data: Character }) => {
   // Function to render all parameters including arrays
   const renderCharacterParameters = (obj: any) => {
     return Object.entries(obj).map(([key, value]) => {
       if (Array.isArray(value)) {
         return (
-          <AccordionItem>
+          <AccordionItem key={key}>
             <AccordionButton _expanded={{ bg: "black", color: "white" }}>
               <chakra.strong fontSize="2xl">{key}:</chakra.strong>
               <AccordionIcon />
@@ -31,7 +31,7 @@ const CharacterDetail = ({ character }: { character: Character }) => {
             <AccordionPanel pb={4}>
               <ul>
                 {value.map((item, index) => (
-                  <li key={index}>{item}</li>
+                  <li key={index}>{item.name}</li>
                 ))}
               </ul>
             </AccordionPanel>
@@ -39,7 +39,7 @@ const CharacterDetail = ({ character }: { character: Character }) => {
         );
       } else if (typeof value === "object") {
         return (
-          <AccordionItem p={0} key={key}>
+          <AccordionItem key={key}>
             <AccordionButton _expanded={{ bg: "black", color: "white" }}>
               <chakra.strong fontSize="2xl">{key}:</chakra.strong>
               <AccordionIcon />
@@ -51,7 +51,7 @@ const CharacterDetail = ({ character }: { character: Character }) => {
         );
       } else {
         return (
-          <AccordionItem p={0} key={key}>
+          <AccordionItem key={key}>
             <AccordionButton _expanded={{ bg: "black", color: "white" }}>
               <chakra.strong fontSize="2xl">{key}:</chakra.strong>
               <AccordionIcon />
@@ -75,9 +75,9 @@ const CharacterDetail = ({ character }: { character: Character }) => {
           mx="auto"
           border="4px solid black"
           height="140px"
-          w="140px"
-          src={character.images[0]}
-          alt={character.name}
+          width="140px"
+          src={data.images?.[0] || "/no-image.jpg"}
+          alt={data.name}
         />
         {/*<SimpleGrid mx="auto" columns={1} gap={10} w="80%">*/}
         <Accordion
@@ -87,7 +87,7 @@ const CharacterDetail = ({ character }: { character: Character }) => {
           defaultIndex={[0]}
           allowMultiple
         >
-          {renderCharacterParameters(character)}
+          {renderCharacterParameters(data)}
         </Accordion>
       </Flex>
 
@@ -97,7 +97,7 @@ const CharacterDetail = ({ character }: { character: Character }) => {
 };
 
 interface CharacterDetailProps {
-  character: Character;
+  data: Character;
 }
 
 export const getServerSideProps: GetServerSideProps<
@@ -113,13 +113,13 @@ export const getServerSideProps: GetServerSideProps<
     const response = await axios.get<Character>(
       `https://narutodb.xyz/api/${slug}/${id}`
     );
-    const character = response.data;
+    const data = response.data;
 
     return {
-      props: { character },
+      props: { data },
     };
   } catch (error) {
-    console.error("Error fetching character data:", error);
+    console.error("Error fetching data data:", error);
     return {
       notFound: true,
     };

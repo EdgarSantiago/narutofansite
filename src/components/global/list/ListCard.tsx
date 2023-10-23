@@ -27,7 +27,9 @@ export default function ListCard({
       to top,
       transparent,
       #1111113c
-    ),url(${data.images && data.images.length > 0 ? data.images[0] : ""})`}
+    ),url(${
+      data.images && data.images.length > 0 ? data.images[0] : "/no-image.jpg"
+    })`}
           backgroundSize="100% 100%"
           backgroundRepeat="no-repeat"
           position="relative"
