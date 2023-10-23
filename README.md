@@ -21,8 +21,6 @@ Criei este site por diversão, dedicado ao mundo de Naruto! 😃. Fique à vonta
 - Integração na api do naruto ✅
 - Paginação ✅
 
-
-
 ## Referências
 
 - [Naruto site oficial](https://naruto-official.com)
