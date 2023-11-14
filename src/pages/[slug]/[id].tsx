@@ -15,7 +15,7 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 
 const CharacterDetail = ({ data }: { data: Character }) => {
   // Function to render all parameters including arrays
@@ -100,9 +100,76 @@ interface CharacterDetailProps {
   data: Character;
 }
 
-export const getServerSideProps: GetServerSideProps<
-  CharacterDetailProps
-> = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  try {
+    const endpoints = [
+      { url: "https://narutodb.xyz/api/character", type: "characters" },
+      { url: "https://narutodb.xyz/api/clan", type: "clans" },
+      { url: "https://narutodb.xyz/api/kara", type: "karaItems" },
+      { url: "https://narutodb.xyz/api/village", type: "villages" },
+      { url: "https://narutodb.xyz/api/kekkei-genkai", type: "kekkeiGenkai" },
+      { url: "https://narutodb.xyz/api/tailed-beast", type: "tailedBeasts" },
+      { url: "https://narutodb.xyz/api/team", type: "teams" },
+      { url: "https://narutodb.xyz/api/akatsuki", type: "akatsukiMembers" },
+      // Add more endpoints as needed
+    ];
+
+    const paths = [];
+
+    const fetchAndMapPaths = async (url: any, itemType: any) => {
+      const response = await axios.get(url);
+      const pageSize = response.data.pageSize;
+      const totalItems = response.data[`total${itemType}`];
+      const totalPages = Math.ceil(totalItems / pageSize);
+
+      const initialItems = response.data[itemType];
+      const initialPaths = initialItems.map((item: any) => ({
+        params: { id: item.id.toString(), slug: itemType },
+      }));
+
+      if (totalPages > 1) {
+        const additionalPaths = [];
+
+        for (let page = 2; page <= totalPages; page++) {
+          const nextPageResponse = await axios.get(
+            `${url}?currentPage=${page}&pageSize=${pageSize}`
+          );
+          const nextPageItems = nextPageResponse.data[itemType];
+
+          const nextPagePaths = nextPageItems.map((item: any) => ({
+            params: { id: item.id.toString(), slug: itemType },
+          }));
+
+          additionalPaths.push(...nextPagePaths);
+        }
+
+        return [...initialPaths, ...additionalPaths];
+      }
+
+      return initialPaths;
+    };
+
+    for (const endpoint of endpoints) {
+      const entityPaths = await fetchAndMapPaths(endpoint.url, endpoint.type);
+      paths.push(...entityPaths);
+    }
+
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
+};
+
+export const getStaticProps: GetStaticProps<CharacterDetailProps> = async ({
+  params,
+}) => {
   const { id, slug } = params as { id: string; slug: string };
 
   try {
@@ -119,11 +186,10 @@ export const getServerSideProps: GetServerSideProps<
       props: { data },
     };
   } catch (error) {
-    console.error("Error fetching data data:", error);
+    console.error("Error fetching data:", error);
     return {
       notFound: true,
     };
   }
 };
-
 export default CharacterDetail;

@@ -120,6 +120,7 @@ export default function Carousel() {
         {data.map((data, i) => (
           <SwiperSlide key={i} style={{ position: "relative" }}>
             <Flex
+              color="black"
               h={["30vh", "40vh", "45vh", "50vh"]}
               align={"center"}
               justify={"center"}
