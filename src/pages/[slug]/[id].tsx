@@ -132,37 +132,46 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = [];
 
-    const fetchAndMapPaths = async (url: any, itemType: any) => {
-      const response = await axios.get(url);
-      const pageSize = response.data?.pageSize;
-      const totalItems = response.data[`total${itemType}`];
-      const totalPages = Math.ceil(totalItems / pageSize);
+    const fetchAndMapPaths = async (url: string, itemType: string) => {
+      try {
+        const response = await axios.get(url);
+        const pageSize = response.data?.pageSize;
+        const totalItems = response.data?.[`total${itemType}`];
+        const totalPages = Math.ceil(totalItems / pageSize);
 
-      const initialItems = response.data[itemType];
-      const initialPaths = initialItems.map((item: any) => ({
-        params: { id: item.id.toString(), slug: itemType },
-      }));
-
-      if (totalPages > 1) {
-        const additionalPaths = [];
-
-        for (let page = 2; page <= totalPages; page++) {
-          const nextPageResponse = await axios.get(
-            `${url}?currentPage=${page}&pageSize=${pageSize}`
-          );
-          const nextPageItems = nextPageResponse.data[itemType];
-
-          const nextPagePaths = nextPageItems.map((item: any) => ({
+        const initialItems = response.data?.[itemType];
+        const initialPaths =
+          initialItems?.map((item: any) => ({
             params: { id: item.id.toString(), slug: itemType },
-          }));
+          })) || [];
 
-          additionalPaths.push(...nextPagePaths);
+        if (totalPages > 1) {
+          const additionalPaths = [];
+
+          for (let page = 2; page <= totalPages; page++) {
+            const nextPageResponse = await axios.get(
+              `${url}?currentPage=${page}&pageSize=${pageSize}`
+            );
+
+            const nextPageItems = nextPageResponse.data?.[itemType];
+
+            if (nextPageItems) {
+              const nextPagePaths = nextPageItems.map((item: any) => ({
+                params: { id: item.id.toString(), slug: itemType },
+              }));
+
+              additionalPaths.push(...nextPagePaths);
+            }
+          }
+
+          return [...initialPaths, ...additionalPaths];
         }
 
-        return [...initialPaths, ...additionalPaths];
+        return initialPaths;
+      } catch (error) {
+        console.error(`Error fetching data from ${url}:`, error);
+        return [];
       }
-
-      return initialPaths;
     };
 
     for (const endpoint of endpoints) {
