@@ -22,12 +22,11 @@ const DynamicCarousel = dynamic(
 );
 
 import Layout from "@/components/global/Layout";
-import Carousel from "@/components/homepage/Carousel";
 //import Search from "@/components/global/Search";
 //import Options from "@/components/homepage/Options";
 import List from "@/components/global/list/List";
 
-import { Flex, Skeleton, Spinner } from "@chakra-ui/react";
+import { Flex, Skeleton } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 
 export default function Blog({

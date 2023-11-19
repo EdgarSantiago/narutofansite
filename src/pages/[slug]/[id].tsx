@@ -9,17 +9,26 @@ import {
   AccordionItem,
   AccordionPanel,
   Box,
+  Center,
   chakra,
   Flex,
   Image,
   SimpleGrid,
+  Spinner,
+  Text,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { useState } from "react";
 
 const CharacterDetail = ({ data }: { data: Character }) => {
+  const [loading, setloading] = useState(false);
   // Function to render all parameters including arrays
   const renderCharacterParameters = (obj: any) => {
+    if (!obj) {
+      return null; // or handle it in a way that makes sense for your application
+    }
+
     return Object.entries(obj).map(([key, value]) => {
       if (Array.isArray(value)) {
         return (
@@ -65,31 +74,38 @@ const CharacterDetail = ({ data }: { data: Character }) => {
 
   return (
     <Layout>
-      <Flex
-        direction={"column"}
-        minH="80vh"
-        justify={"center"}
-        gap={[2, 3, 4, 5]}
-      >
-        <Image
-          mx="auto"
-          border="4px solid black"
-          height="140px"
-          width="140px"
-          src={data.images?.[0] || "/no-image.jpg"}
-          alt={data.name}
-        />
-        {/*<SimpleGrid mx="auto" columns={1} gap={10} w="80%">*/}
-        <Accordion
-          w={["100%", "100%", "80%", "60%"]}
-          mx="auto"
-          border="4px solid black"
-          defaultIndex={[0]}
-          allowMultiple
+      {data ? (
+        <Flex
+          direction={"column"}
+          minH="80vh"
+          justify={"center"}
+          gap={[2, 3, 4, 5]}
         >
-          {renderCharacterParameters(data)}
-        </Accordion>
-      </Flex>
+          <Image
+            mx="auto"
+            border="4px solid black"
+            height="140px"
+            width="140px"
+            src={data?.images?.[0] || "/no-image.jpg"}
+            alt={data?.name}
+          />
+          {/*<SimpleGrid mx="auto" columns={1} gap={10} w="80%">*/}
+          <Accordion
+            w={["100%", "100%", "80%", "60%"]}
+            mx="auto"
+            border="4px solid black"
+            defaultIndex={[0]}
+            allowMultiple
+          >
+            {renderCharacterParameters(data)}
+          </Accordion>
+        </Flex>
+      ) : (
+        <Center minH="80vh" flexDirection={"column"} gap={4}>
+          <Spinner size={"lg"} colorScheme="orange" />
+          <Text fontSize={"2xl"}>Carregando</Text>
+        </Center>
+      )}
 
       {/*</SimpleGrid>*/}
     </Layout>
@@ -103,14 +119,14 @@ interface CharacterDetailProps {
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
     const endpoints = [
-      { url: "https://narutodb.xyz/api/character", type: "characters" },
-      { url: "https://narutodb.xyz/api/clan", type: "clans" },
-      { url: "https://narutodb.xyz/api/kara", type: "karaItems" },
-      { url: "https://narutodb.xyz/api/village", type: "villages" },
-      { url: "https://narutodb.xyz/api/kekkei-genkai", type: "kekkeiGenkai" },
-      { url: "https://narutodb.xyz/api/tailed-beast", type: "tailedBeasts" },
-      { url: "https://narutodb.xyz/api/team", type: "teams" },
-      { url: "https://narutodb.xyz/api/akatsuki", type: "akatsukiMembers" },
+      { url: "https://narutodb.xyz/api/character", type: "character" },
+      { url: "https://narutodb.xyz/api/clan", type: "clan" },
+      { url: "https://narutodb.xyz/api/kara", type: "kara" },
+      { url: "https://narutodb.xyz/api/village", type: "village" },
+      { url: "https://narutodb.xyz/api/kekkei-genkai", type: "kekkei-genkai" },
+      { url: "https://narutodb.xyz/api/tailed-beast", type: "tailed-beast" },
+      { url: "https://narutodb.xyz/api/team", type: "team" },
+      { url: "https://narutodb.xyz/api/akatsuki", type: "akatsuki" },
       // Add more endpoints as needed
     ];
 
@@ -118,7 +134,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const fetchAndMapPaths = async (url: any, itemType: any) => {
       const response = await axios.get(url);
-      const pageSize = response.data.pageSize;
+      const pageSize = response.data?.pageSize;
       const totalItems = response.data[`total${itemType}`];
       const totalPages = Math.ceil(totalItems / pageSize);
 
