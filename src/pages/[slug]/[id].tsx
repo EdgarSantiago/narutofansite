@@ -1,7 +1,6 @@
 import Layout from "@/components/global/Layout";
 import MangaBox from "@/components/global/MangaBox";
 import Title from "@/components/global/Title";
-import { Character } from "@/lib/types/characterType";
 import {
   Accordion,
   AccordionButton,
@@ -21,7 +20,7 @@ import axios from "axios";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { useState } from "react";
 
-const CharacterDetail = ({ data }: { data: Character }) => {
+const CharacterDetail = ({ data }: { data: any }) => {
   const [loading, setloading] = useState(false);
   // Function to render all parameters including arrays
   const renderCharacterParameters = (obj: any) => {
@@ -113,33 +112,79 @@ const CharacterDetail = ({ data }: { data: Character }) => {
 };
 
 interface CharacterDetailProps {
-  data: Character;
+  data: any;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
     const endpoints = [
-      { url: "https://narutodb.xyz/api/character", type: "character" },
-      { url: "https://narutodb.xyz/api/clan", type: "clan" },
-      { url: "https://narutodb.xyz/api/kara", type: "kara" },
-      { url: "https://narutodb.xyz/api/village", type: "village" },
-      { url: "https://narutodb.xyz/api/kekkei-genkai", type: "kekkei-genkai" },
-      { url: "https://narutodb.xyz/api/tailed-beast", type: "tailed-beast" },
-      { url: "https://narutodb.xyz/api/team", type: "team" },
-      { url: "https://narutodb.xyz/api/akatsuki", type: "akatsuki" },
-      // Add more endpoints as needed
+      {
+        url: "https://narutodb.xyz/api/character",
+        type: "character",
+        listSlug: "characters",
+        totalSlug: "totalCharacters",
+      },
+      {
+        url: "https://narutodb.xyz/api/clan",
+        type: "clan",
+        listSlug: "clans",
+        totalSlug: "totalClans",
+      },
+      {
+        url: "https://narutodb.xyz/api/kara",
+        type: "kara",
+        listSlug: "kara",
+        totalSlug: "totalKara",
+      },
+      {
+        url: "https://narutodb.xyz/api/village",
+        type: "village",
+        listSlug: "villages",
+        totalSlug: "totalVillages",
+      },
+      {
+        url: "https://narutodb.xyz/api/kekkei-genkai",
+        type: "kekkei-genkai",
+        listSlug: "kekkeigenkai",
+        totalSlug: "totalKekkeiGenkai",
+      },
+      {
+        url: "https://narutodb.xyz/api/tailed-beast",
+        type: "tailed-beast",
+        listSlug: "tailedbeast",
+        totalSlug: "totalTailedBeasts",
+      },
+      {
+        url: "https://narutodb.xyz/api/team",
+        type: "team",
+        listSlug: "teams",
+        totalSlug: "totalTeams",
+      },
+      {
+        url: "https://narutodb.xyz/api/akatsuki",
+        type: "akatsuki",
+        listSlug: "akatsuki",
+        totalSlug: "totalMembers",
+      },
     ];
 
     const paths = [];
 
-    const fetchAndMapPaths = async (url: string, itemType: string) => {
+    const fetchAndMapPaths = async (
+      url: string,
+      itemType: string,
+      totalSlug: string,
+      listSlug: string
+    ) => {
       try {
         const response = await axios.get(url);
         const pageSize = response.data?.pageSize;
-        const totalItems = response.data?.[`total${itemType}`];
+        const totalItems = response.data?.[`${totalSlug}`];
+
         const totalPages = Math.ceil(totalItems / pageSize);
 
-        const initialItems = response.data?.[itemType];
+        const initialItems = response.data?.[listSlug];
+
         const initialPaths =
           initialItems?.map((item: any) => ({
             params: { id: item.id.toString(), slug: itemType },
@@ -175,8 +220,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 
     for (const endpoint of endpoints) {
-      const entityPaths = await fetchAndMapPaths(endpoint.url, endpoint.type);
-      paths.push(...entityPaths);
+      try {
+        const entityPaths = await fetchAndMapPaths(
+          endpoint.url,
+          endpoint.type,
+          endpoint.listSlug,
+          endpoint.totalSlug
+        );
+        paths.push(...entityPaths);
+      } catch (error) {
+        console.error(`Error fetching paths for ${endpoint.type}:`, error);
+      }
     }
 
     return {
@@ -196,13 +250,12 @@ export const getStaticProps: GetStaticProps<CharacterDetailProps> = async ({
   params,
 }) => {
   const { id, slug } = params as { id: string; slug: string };
-
   try {
     if (!id) {
-      throw new Error("Character ID is missing.");
+      throw new Error("any ID is missing.");
     }
 
-    const response = await axios.get<Character>(
+    const response = await axios.get<any>(
       `https://narutodb.xyz/api/${slug}/${id}`
     );
     const data = response.data;
