@@ -173,8 +173,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const fetchAndMapPaths = async (
       url: string,
       itemType: string,
-      totalSlug: string,
-      listSlug: string
+      listSlug: string,
+      totalSlug: string
     ) => {
       try {
         const response = await axios.get(url);
@@ -183,7 +183,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
         const totalPages = Math.ceil(totalItems / pageSize);
 
-        const initialItems = response.data?.[listSlug];
+        console.log(listSlug);
+
+        const initialItems = response.data?.[`${listSlug}`];
 
         const initialPaths =
           initialItems?.map((item: any) => ({
