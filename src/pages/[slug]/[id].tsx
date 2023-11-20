@@ -151,7 +151,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       {
         url: "https://narutodb.xyz/api/tailed-beast",
         type: "tailed-beast",
-        listSlug: "tailedbeast",
+        listSlug: "tailedBeasts",
         totalSlug: "totalTailedBeasts",
       },
       {
